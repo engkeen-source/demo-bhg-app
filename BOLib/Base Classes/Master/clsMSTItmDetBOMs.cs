@@ -1,0 +1,351 @@
+﻿
+
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using Csla;
+using Csla.Data;
+using System.Transactions;
+using BOLib;
+
+[Serializable()]
+public class MSTItmDetBOMs : DataTable
+{
+
+    #region Factory Methods
+
+
+    public MSTItmDetBOMs()
+    {
+        this.Fetch(new Criteria(0, 1));
+    }
+
+    public MSTItmDetBOMs(SqlConnection cn)
+    {
+        this.Fetch(cn, new Criteria(0, 1));
+    }
+
+    public static MSTItmDetBOMs Get(int? headerKey)
+    {
+        MSTItmDetBOMs obj = new MSTItmDetBOMs();
+        obj.Fetch(new Criteria(headerKey, 1));
+        return obj;
+    }
+
+    public static MSTItmDetBOMs New()
+    {
+        MSTItmDetBOMs obj = new MSTItmDetBOMs();
+        return obj;
+    }
+    public static MSTItmDetBOMs New(SqlConnection cn)
+    {
+        MSTItmDetBOMs obj = new MSTItmDetBOMs();
+        obj.Fetch(cn, new Criteria(0, 1));
+        return obj;
+    }
+
+    #endregion //Factory Methods
+
+    #region Criteria
+
+    [Serializable()]
+    internal class Criteria
+    {
+        public int? _headerKey = null;
+        public int? _bomLineType = null;
+        public int? _option = null;
+
+
+        internal Criteria()
+        {
+        }
+
+        internal Criteria(int? HeaderKey, int? Option)
+        {
+            _headerKey = HeaderKey;
+            _option = Option;
+        }
+
+        internal Criteria(int? ItmKey, GEnum.BOMLineType BOMLineType, int? Option)
+        {
+            _headerKey = ItmKey;
+            _bomLineType = (int?)BOMLineType;
+            _option = Option;
+        }
+    }
+
+    #endregion //Criteria
+
+    #region Data Access - Fetch
+
+    internal bool Fetch(Criteria criteria)
+    {
+        bool retValue = false;
+
+
+        // Create new sql connection for this method. 
+        using (SqlConnection cn = new SqlConnection(Database.BossDemoConnection))
+        {
+            // Open sql connection. 
+            cn.Open();
+
+            retValue = this.Fetch(cn, criteria);
+        }// End of SqlConnection.
+
+
+
+        return retValue;
+    }
+
+    internal bool Fetch(SqlConnection cn, Criteria criteria)
+    {
+        using (SqlCommand cm = cn.CreateCommand())
+        {
+            cm.CommandType = CommandType.StoredProcedure;
+            cm.CommandText = "MSTItmDetBOM_Get";
+
+            cm.Parameters.AddWithValue("@Option", criteria._option);
+            cm.Parameters.AddWithValue("@ItmKey", criteria._headerKey);
+            cm.Parameters.AddWithValue("@BOMLineType", criteria._bomLineType);
+
+
+
+            // Additional Parameter for Return Value From StoredProcedure -- Changed By Richard
+            cm.Parameters.AddWithValue("@RetValue", 0);
+            cm.Parameters["@RetValue"].Direction = ParameterDirection.Output;
+
+            System.Data.SqlClient.SqlDataAdapter sqlAdp = new System.Data.SqlClient.SqlDataAdapter(cm);
+            sqlAdp.Fill(this);
+            if ((int)cm.Parameters["@RetValue"].Value == (int)GEnum.SpState.Pass)
+                return true;
+            else
+                return false;
+        }//using
+
+    }
+
+    #endregion //Data Access - Fetch
+
+    #region Data Access - Insert
+
+    internal bool Insert(int? headerKey)
+    {
+        bool retValue = false;
+
+        using (TransactionScope scope = new TransactionScope())
+        {
+            // Create new sql connection for this method. 
+            using (SqlConnection cn = new SqlConnection(Database.BossDemoConnection))
+            {
+                // Open sql connection. 
+                cn.Open();
+                retValue = this.Insert(cn, headerKey);
+            }
+            // No errors - commit transaction
+              if (Transaction.Current.TransactionInformation.Status != TransactionStatus.Active)  throw new Exception("Transaction has aborted."); scope.Complete();
+        }// Already close and dispose sql connection.
+
+        return retValue;
+    }
+
+    internal bool Insert(SqlConnection cn, int? headerKey)
+    {
+        bool retValue = false;
+
+        if (this.Rows.Count == 0)
+        {
+            return true;
+        }
+        try
+        {
+            foreach (DataRow dr in this.Rows)
+            {
+                if (dr.RowState == DataRowState.Deleted)
+                {
+                    retValue = true;
+                    continue;
+                }
+                using (SqlCommand cm = cn.CreateCommand())
+                {
+                    cm.CommandType = CommandType.StoredProcedure;
+                    cm.CommandText = "MSTItmDetBOM_AddUpdate";
+
+                    cm.Parameters.AddWithValue("@Option", 0);
+                    cm.Parameters.AddWithValue("@ItmKey", headerKey);
+                    cm.Parameters.AddWithValue("@BOMItmKey", dr["BOMItmKey"]);
+                    cm.Parameters.AddWithValue("@BOMLineType", dr["BOMLineType"]);
+                    cm.Parameters.AddWithValue("@BOMItmType", dr["BOMItmType"]);
+                    cm.Parameters.AddWithValue("@BOMUOMKey", dr["BOMUOMKey"]);
+                    cm.Parameters.AddWithValue("@BOMQty", GFunc.NEDec(dr["BOMQty"], 0));
+                    cm.Parameters.AddWithValue("@BOMLabourCost", GFunc.NEDec(dr["BOMLabourCost"], 0));
+
+                    cm.Parameters.AddWithValue("@Custom1", GFunc.IsNE(dr["Custom1"]) == true ? DBNull.Value : dr["Custom1"]);
+                    cm.Parameters.AddWithValue("@Custom2", GFunc.IsNE(dr["Custom2"]) == true ? DBNull.Value : dr["Custom2"]);
+                    cm.Parameters.AddWithValue("@Custom3", GFunc.IsNE(dr["Custom3"]) == true ? DBNull.Value : dr["Custom3"]);
+                    cm.Parameters.AddWithValue("@CreateDate", dr["CreateDate"]);
+                    cm.Parameters.AddWithValue("@CreateUserKey", dr["CreateUserKey"]);
+                    cm.Parameters.AddWithValue("@LastModifiedDate", dr["LastModifiedDate"]);
+                    cm.Parameters.AddWithValue("@LastModifiedUserKey", dr["LastModifiedUserKey"]);
+
+
+                    cm.Parameters.AddWithValue("@RetValue", 0);
+                    cm.Parameters["@RetValue"].Direction = ParameterDirection.Output;
+                    cm.ExecuteNonQuery();
+
+                    if ((int)cm.Parameters["@RetValue"].Value == (int)GEnum.SpState.Pass)
+                    {
+                        retValue = true;
+                    }
+                    else
+                        retValue = false;
+                }// Already close and dispose sql command.
+            }
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        return retValue;
+    }
+
+    #endregion Insert
+
+    #region Data Access - Update
+
+    internal bool Update()
+    {
+        bool retValue = false;
+
+        using (TransactionScope scope = new TransactionScope())
+        {
+            //Create new sql connection for this method. 
+            using (SqlConnection cn = new SqlConnection(Database.BossDemoConnection))
+            {
+                // Open sql connection. 
+                cn.Open();
+                retValue = this.Update(cn);
+            }
+            // No errors - commit transaction
+              if (Transaction.Current.TransactionInformation.Status != TransactionStatus.Active)  throw new Exception("Transaction has aborted."); scope.Complete();
+        }// Already close and dispose sql connection.
+
+        return retValue;
+    }
+
+    internal bool Update(SqlConnection cn)
+    {
+        bool retValue = false;
+
+        foreach (DataRow dr in this.Rows)
+        {
+            using (SqlCommand cm = cn.CreateCommand())
+            {
+                cm.CommandType = CommandType.StoredProcedure;
+                cm.CommandText = "MSTItmDetBOM_AddUpdate";
+
+                cm.Parameters.AddWithValue("@Option", 1);
+
+
+                cm.Parameters.AddWithValue("@ItmKey", dr["ItmKey"]);
+                cm.Parameters.AddWithValue("@BOMItmKey", dr["BOMItmKey"]);
+                cm.Parameters.AddWithValue("@BOMLineType", dr["BOMLineType"]);
+                cm.Parameters.AddWithValue("@BOMItmType", dr["BOMItmType"]);
+                cm.Parameters.AddWithValue("@BOMUOMKey", dr["BOMUOMKey"]);
+                cm.Parameters.AddWithValue("@BOMQty", dr["BOMQty"].ToString() == "" ? 0 : dr["BOMQty"]);
+                cm.Parameters.AddWithValue("@BOMLabourCost", dr["BOMLabourCost"].ToString() == "" ? 0 : dr["BOMLabourCost"]);
+                cm.Parameters.AddWithValue("@CreateDate", dr["CreateDate"]);
+                cm.Parameters.AddWithValue("@CreateUserKey", dr["CreateUserKey"]);
+                cm.Parameters.AddWithValue("@LastModifiedDate", dr["LastModifiedDate"]);
+                cm.Parameters.AddWithValue("@LastModifiedUserKey", dr["LastModifiedUserKey"]);
+                cm.Parameters.AddWithValue("@Custom1", dr["Custom1"]);
+                cm.Parameters.AddWithValue("@Custom2", dr["Custom2"]);
+                cm.Parameters.AddWithValue("@Custom3", dr["Custom3"]);
+                cm.Parameters.AddWithValue("@CreateDate", DBNull.Value);
+                cm.Parameters.AddWithValue("@CreateUserKey", AppInfor.currentUserKey);
+                cm.Parameters.AddWithValue("@LastModifiedDate", DBNull.Value);
+                cm.Parameters.AddWithValue("@LastModifiedUserKey", AppInfor.currentUserKey);
+
+
+                cm.Parameters.AddWithValue("@RetValue", 0);
+                cm.Parameters["@RetValue"].Direction = ParameterDirection.Output;
+                // cm.Parameters["@NewDocKey"].Direction = ParameterDirection.Output;
+                // Execute command.
+                cm.ExecuteNonQuery();
+
+                if ((int)cm.Parameters["@RetValue"].Value == (int)GEnum.SpState.Pass)
+                    retValue = true;
+                else
+                    retValue = false;
+            }
+        }// Already close and dispose sql command.
+
+        return retValue;
+    }
+
+    #endregion Update
+
+    #region Data Access - Delete
+
+    internal bool Delete(Criteria criteria)
+    {
+        bool retValue = false;
+
+        try
+        {
+            using (TransactionScope scope = new TransactionScope())
+            {
+                //Create new sql connection for this method. 
+                using (SqlConnection cn = new SqlConnection(Database.BossDemoConnection))
+                {
+                    // Open sql connection. 
+                    cn.Open();
+                    retValue = this.Delete(cn, criteria);
+                }
+                // No errors - commit transaction
+                  if (Transaction.Current.TransactionInformation.Status != TransactionStatus.Active)  throw new Exception("Transaction has aborted."); scope.Complete();
+            }// Already close and dispose sql connection.
+        }
+        catch (Exception ex)
+        {
+            throw (ex);
+        }
+        return retValue;
+    }
+
+    internal bool Delete(SqlConnection cn, Criteria criteria)
+    {
+        bool retValue = false;
+
+        try
+        {
+            using (SqlCommand cm = cn.CreateCommand())
+            {
+                cm.CommandType = CommandType.StoredProcedure;
+                cm.CommandText = "MSTItmDetBOM_Delete";
+
+
+                cm.Parameters.AddWithValue("@ItmKey", criteria._headerKey);
+                cm.Parameters.AddWithValue("@BOMLineType", criteria._bomLineType);
+
+                // Additional Parameter for Return Value From StoredProcedure -- Changed By Richard
+                cm.Parameters.AddWithValue("@RetValue", 0);
+                cm.Parameters["@RetValue"].Direction = ParameterDirection.Output;
+                // Execute command.
+                cm.ExecuteNonQuery();
+
+                if ((int)cm.Parameters["@RetValue"].Value == (int)GEnum.SpState.Pass)
+                    retValue = true;
+            }// Already close and dispose sql command.
+        }
+        catch (Exception ex)
+        {
+            throw (ex);
+        }
+        return retValue;
+    }
+
+    #endregion Delete
+
+}
+
+

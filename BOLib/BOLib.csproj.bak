@@ -1,0 +1,957 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{440519F8-6FB7-44AF-9276-0F97209115B4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BOLib</RootNamespace>
+    <AssemblyName>BOLib</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>BOLib04Nov2011.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Csla, Version=3.5.1.0, Culture=neutral, PublicKeyToken=93be5fdc093e4c30, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Csla.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Shared.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.Misc.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinCalcManager.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinEditors.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinGrid.DocumentExport.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinGrid.ExcelExport.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinGrid.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinStatusBar.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Boss(sale approval)\BOLib\bin\Debug\Infragistics2.Win.UltraWinStatusBar.v11.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinTabControl.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics2.Win.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics3.Documents.Core.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Infragistics3.Documents.Excel.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TAUtil, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\TAUtil.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base Classes\AP\clsAPADJ.cs" />
+    <Compile Include="Base Classes\AP\clsAPBL.cs" />
+    <Compile Include="Base Classes\AP\clsAPBLDetItm.cs" />
+    <Compile Include="Base Classes\AP\clsAPBLDetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AP\clsAPPD.cs" />
+    <Compile Include="Base Classes\AP\clsAPPDDetItm.cs" />
+    <Compile Include="Base Classes\AP\clsAPPDDetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AP\clsAPPJ.cs" />
+    <Compile Include="Base Classes\AP\clsAPPJDetItm.cs" />
+    <Compile Include="Base Classes\AP\clsAPPJDetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AP\clsAPPN.cs" />
+    <Compile Include="Base Classes\AP\clsAPPNDetItm.cs" />
+    <Compile Include="Base Classes\AP\clsAPPNDetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AP\clsAPPO.cs" />
+    <Compile Include="Base Classes\AP\clsAPPOCsgItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AP\clsAPPODetItm.cs" />
+    <Compile Include="Base Classes\AP\clsAPPODetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AP\clsAPPOs.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AP\clsAPPS.cs" />
+    <Compile Include="Base Classes\AP\clsAPPSDetItm.cs" />
+    <Compile Include="Base Classes\AP\clsAPPSDetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AP\clsAPPY.cs" />
+    <Compile Include="Base Classes\AP\clsAPPYDetExp.cs" />
+    <Compile Include="Base Classes\AP\clsAPPYDetExps.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AP\clsAPPYDetItm.cs" />
+    <Compile Include="Base Classes\AP\clsAPPYDetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AP\clsAPRQ.cs" />
+    <Compile Include="Base Classes\AP\clsAPRQDetItm.cs" />
+    <Compile Include="Base Classes\AP\clsAPRQDetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AR\clsARADJ.cs" />
+    <Compile Include="Base Classes\AR\clsARCT.cs" />
+    <Compile Include="Base Classes\AR\clsARCTDetItm.cs" />
+    <Compile Include="Base Classes\AR\clsARCTDetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AR\clsARDO.cs" />
+    <Compile Include="Base Classes\AR\clsARDODetItm.cs" />
+    <Compile Include="Base Classes\AR\clsARDODetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AR\clsARDOTrack.cs" />
+    <Compile Include="Base Classes\AR\clsARIV.cs" />
+    <Compile Include="Base Classes\AR\clsARIVCSD.cs" />
+    <Compile Include="Base Classes\AR\clsARIVCSDDetValues.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AR\clsARIVDetItm.cs" />
+    <Compile Include="Base Classes\AR\clsARIVDetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AR\clsARPL.cs" />
+    <Compile Include="Base Classes\AR\clsARPLDetPack.cs" />
+    <Compile Include="Base Classes\AR\clsARPLDetPackItm.cs" />
+    <Compile Include="Base Classes\AR\clsARPLDetPackItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AR\clsARPLDetPacks.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AR\clsARPY.cs" />
+    <Compile Include="Base Classes\AR\clsARPYDetExp.cs" />
+    <Compile Include="Base Classes\AR\clsARPYDetExps.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AR\clsARPYDetItm.cs" />
+    <Compile Include="Base Classes\AR\clsARPYDetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AR\clsARQO.cs" />
+    <Compile Include="Base Classes\AR\clsARQODetItm.cs" />
+    <Compile Include="Base Classes\AR\clsARQODetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AR\clsARQODetItmVendor.cs" />
+    <Compile Include="Base Classes\AR\clsARQODetItmVendors.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AR\clsARQOVendor.cs" />
+    <Compile Include="Base Classes\AR\clsARQOVendors.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AR\clsARRO.cs" />
+    <Compile Include="Base Classes\AR\clsARRODetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AR\clsARSO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AR\clsARSODetItm.cs" />
+    <Compile Include="Base Classes\AR\clsARSODetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AR\clsARSOs.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\AR\clsEStoreQO.cs" />
+    <Compile Include="Base Classes\AR\clsNSSalePOLinks.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\CSG\clsCSCPDDetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\CSG\clsCSCPODetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\CSG\clsCSCPOs.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\CSG\clsCSCPSDetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\CSG\clsCSCSIDetExps.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\CSG\clsCSCSIDetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\CSG\clsCSCPD.cs" />
+    <Compile Include="Base Classes\CSG\clsCSCPDDetItm.cs" />
+    <Compile Include="Base Classes\CSG\clsCSCPO.cs" />
+    <Compile Include="Base Classes\CSG\clsCSCPODetItm.cs" />
+    <Compile Include="Base Classes\CSG\clsCSCPS.cs" />
+    <Compile Include="Base Classes\CSG\clsCSCPSDetItm.cs" />
+    <Compile Include="Base Classes\CSG\clsCSCSI.cs" />
+    <Compile Include="Base Classes\CSG\clsCSCSIDetExp.cs" />
+    <Compile Include="Base Classes\CSG\clsCSCSIDetItm.cs" />
+    <Compile Include="Base Classes\GL\clsGLDPDetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\GL\clsGLJNLDetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\GL\clsGLDP.cs" />
+    <Compile Include="Base Classes\GL\clsGLDPDetItm.cs" />
+    <Compile Include="Base Classes\GL\clsGLJNL.cs" />
+    <Compile Include="Base Classes\GL\clsGLJNLDetItm.cs" />
+    <Compile Include="Base Classes\GL\clsGLRV.cs" />
+    <Compile Include="Base Classes\ItemAdjustment\clsINADJDetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\ItemAdjustment\clsINMFNDetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\ItemAdjustment\clsINTRNDetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\ItemAdjustment\clsINADJ.cs" />
+    <Compile Include="Base Classes\ItemAdjustment\clsINADJDetItm.cs" />
+    <Compile Include="Base Classes\ItemAdjustment\clsINMFN.cs" />
+    <Compile Include="Base Classes\ItemAdjustment\clsINMFNDetItm.cs" />
+    <Compile Include="Base Classes\ItemAdjustment\clsINTRN.cs" />
+    <Compile Include="Base Classes\ItemAdjustment\clsINTRNDetItm.cs" />
+    <Compile Include="Base Classes\Master\clsINLedger.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Master\clsKeyCustomer.cs" />
+    <Compile Include="Base Classes\Master\clsKeyCustomers.cs" />
+    <Compile Include="Base Classes\Master\clsMSTAcc.cs" />
+    <Compile Include="Base Classes\Master\clsMSTAccBranch.cs" />
+    <Compile Include="Base Classes\Master\clsMSTAccBranchs.cs" />
+    <Compile Include="Base Classes\Master\clsMSTAccDept.cs" />
+    <Compile Include="Base Classes\Master\clsMSTAccDepts.cs" />
+    <Compile Include="Base Classes\Master\clsMSTAccs.cs" />
+    <Compile Include="Base Classes\Master\clsMSTAccTranGrp.cs" />
+    <Compile Include="Base Classes\Master\clsMSTBudget.cs" />
+    <Compile Include="Base Classes\Master\clsMSTBudgets.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Master\clsMSTCon.cs" />
+    <Compile Include="Base Classes\Master\clsMSTConManage.cs" />
+    <Compile Include="Base Classes\Master\clsMSTConManageDTable.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Master\clsMSTConManageWatchDTable.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Master\clsMSTConOpenBal.cs" />
+    <Compile Include="Base Classes\Master\clsMSTConOpenBals.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Master\clsMSTConRemark.cs" />
+    <Compile Include="Base Classes\Master\clsMSTConRemarkDTable.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Master\clsMSTCons.cs" />
+    <Compile Include="Base Classes\Master\clsMSTEqpt.cs" />
+    <Compile Include="Base Classes\Master\clsMSTEqptDetSub.cs" />
+    <Compile Include="Base Classes\Master\clsMSTEqptDetSubItm.cs" />
+    <Compile Include="Base Classes\Master\clsMSTEqptDetSubItms.cs" />
+    <Compile Include="Base Classes\Master\clsMSTEqptDetSubs.cs" />
+    <Compile Include="Base Classes\Master\clsMSTEqpts.cs" />
+    <Compile Include="Base Classes\Master\clsMSTItm.cs" />
+    <Compile Include="Base Classes\Master\clsMSTItmBatch.cs" />
+    <Compile Include="Base Classes\Master\clsMSTItmBatchLog.cs" />
+    <Compile Include="Base Classes\Master\clsMSTItmBatchLogs.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Master\clsMSTItmBatchs.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Master\clsMSTItmDetAlt.cs" />
+    <Compile Include="Base Classes\Master\clsMSTItmDetAlts.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Master\clsMSTItmDetAss.cs" />
+    <Compile Include="Base Classes\Master\clsMSTItmDetAsss.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Master\clsMSTItmDetBOM.cs" />
+    <Compile Include="Base Classes\Master\clsMSTItmDetBOMs.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Master\clsMSTItmDetLoc.cs" />
+    <Compile Include="Base Classes\Master\clsMSTItmDetLocs.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Master\clsMSTItmDetPrice.cs" />
+    <Compile Include="Base Classes\Master\clsMSTItmDetPrices.cs" />
+    <Compile Include="Base Classes\Master\clsMSTItmHis.cs" />
+    <Compile Include="Base Classes\Master\clsMSTItmHiss.cs" />
+    <Compile Include="Base Classes\Master\clsMSTItmLocOpenBal.cs" />
+    <Compile Include="Base Classes\Master\clsMSTItmLocOpenBals.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Master\clsMSTItms.cs" />
+    <Compile Include="Base Classes\Master\clsMSTItmSerial.cs" />
+    <Compile Include="Base Classes\Master\clsMSTItmSerialLog.cs" />
+    <Compile Include="Base Classes\Master\clsMSTItmSerialLogs.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Master\clsMSTItmSerials.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Master\clsMSTItmStockCount.cs" />
+    <Compile Include="Base Classes\Master\clsMSTItmStockCounts.cs" />
+    <Compile Include="Base Classes\Master\clsMSTJob.cs" />
+    <Compile Include="Base Classes\Master\clsMSTJobDetEst.cs" />
+    <Compile Include="Base Classes\Master\clsMSTJobDetEsts.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Master\clsMSTJobDetOpenBal.cs" />
+    <Compile Include="Base Classes\Master\clsMSTJobDetOpenBals.cs" />
+    <Compile Include="Base Classes\Master\clsMSTJobDetOther.cs" />
+    <Compile Include="Base Classes\Master\clsMSTJobDetOthers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Master\clsMSTJobs.cs" />
+    <Compile Include="Base Classes\Master\clsMSTPriceList.cs" />
+    <Compile Include="Base Classes\Master\clsMSTPriceListDetRatio.cs" />
+    <Compile Include="Base Classes\Master\clsMSTPriceListDetRatios.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Master\clsMSTPriceListDetValue.cs" />
+    <Compile Include="Base Classes\Master\clsMSTPriceListDetValues.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Master\clsMSTPriceLists.cs" />
+    <Compile Include="Base Classes\Master\clsMSTSalesRep.cs" />
+    <Compile Include="Base Classes\Master\clsMSTSalesRepApprover.cs" />
+    <Compile Include="Base Classes\Master\clsMSTSalesRepApprovers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Master\clsMSTSalesRepPayroll.cs" />
+    <Compile Include="Base Classes\Master\clsMSTSalesRepPayrolls.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Master\clsMSTSalesReps.cs" />
+    <Compile Include="Base Classes\Master\clsMSTShipName.cs" />
+    <Compile Include="Base Classes\Master\clsMSTShipNameDetItm.cs" />
+    <Compile Include="Base Classes\Master\clsMSTShipNameDetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Master\clsMSTTimesheet.cs" />
+    <Compile Include="Base Classes\Master\clsMSTVehicle.cs" />
+    <Compile Include="Base Classes\Reference\clsREFAccGrp.cs" />
+    <Compile Include="Base Classes\Reference\clsREFAccGrps.cs" />
+    <Compile Include="Base Classes\Reference\clsREFAddr.cs" />
+    <Compile Include="Base Classes\Reference\clsREFAddrs.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Reference\clsREFBank.cs" />
+    <Compile Include="Base Classes\Reference\clsREFBanks.cs" />
+    <Compile Include="Base Classes\Reference\clsREFBrand.cs" />
+    <Compile Include="Base Classes\Reference\clsREFBrandDetItm.cs" />
+    <Compile Include="Base Classes\Reference\clsREFBrandDetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Reference\clsREFBrands.cs" />
+    <Compile Include="Base Classes\Reference\clsREFCat.cs" />
+    <Compile Include="Base Classes\Reference\clsREFCats.cs" />
+    <Compile Include="Base Classes\Reference\clsRefCmpList.cs" />
+    <Compile Include="Base Classes\Reference\clsREFColor.cs" />
+    <Compile Include="Base Classes\Reference\clsREFColors.cs" />
+    <Compile Include="Base Classes\Reference\clsREFContactInfor.cs" />
+    <Compile Include="Base Classes\Reference\clsREFContactInfors.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Reference\clsREFCurr.cs" />
+    <Compile Include="Base Classes\Reference\clsREFCurrDetItm.cs" />
+    <Compile Include="Base Classes\Reference\clsREFCurrDetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Reference\clsREFCurrs.cs" />
+    <Compile Include="Base Classes\Reference\clsREFDocGrp.cs" />
+    <Compile Include="Base Classes\Reference\clsREFDocGrps.cs" />
+    <Compile Include="Base Classes\Reference\clsREFEqptType.cs" />
+    <Compile Include="Base Classes\Reference\clsREFEqptTypes.cs" />
+    <Compile Include="Base Classes\Reference\clsREFIDFormat.cs" />
+    <Compile Include="Base Classes\Reference\clsREFIDFormats.cs" />
+    <Compile Include="Base Classes\Reference\clsREFIndustry.cs" />
+    <Compile Include="Base Classes\Reference\clsREFIndustrys.cs" />
+    <Compile Include="Base Classes\Reference\clsREFInterest.cs" />
+    <Compile Include="Base Classes\Reference\clsREFInterests.cs" />
+    <Compile Include="Base Classes\Reference\clsREFJobCostType.cs" />
+    <Compile Include="Base Classes\Reference\clsREFJobCostTypes.cs" />
+    <Compile Include="Base Classes\Reference\clsREFJobGrp.cs" />
+    <Compile Include="Base Classes\Reference\clsREFJobGrps.cs" />
+    <Compile Include="Base Classes\Reference\clsREFJobPhase.cs" />
+    <Compile Include="Base Classes\Reference\clsREFJobPhases.cs" />
+    <Compile Include="Base Classes\Reference\clsREFJobTask.cs" />
+    <Compile Include="Base Classes\Reference\clsREFJobTasks.cs" />
+    <Compile Include="Base Classes\Reference\clsREFLoc.cs" />
+    <Compile Include="Base Classes\Reference\clsREFLocs.cs" />
+    <Compile Include="Base Classes\Reference\clsREFOverHead.cs" />
+    <Compile Include="Base Classes\Reference\clsREFOverHeads.cs" />
+    <Compile Include="Base Classes\Reference\clsREFPackingType.cs" />
+    <Compile Include="Base Classes\Reference\clsREFPackingTypes.cs" />
+    <Compile Include="Base Classes\Reference\clsREFPayMode.cs" />
+    <Compile Include="Base Classes\Reference\clsREFPayModes.cs" />
+    <Compile Include="Base Classes\Reference\clsREFScale.cs" />
+    <Compile Include="Base Classes\Reference\clsREFScaleDetItm.cs" />
+    <Compile Include="Base Classes\Reference\clsREFScaleDetItms.cs" />
+    <Compile Include="Base Classes\Reference\clsREFScales.cs" />
+    <Compile Include="Base Classes\Reference\clsREFShipVia.cs" />
+    <Compile Include="Base Classes\Reference\clsREFShipVias.cs" />
+    <Compile Include="Base Classes\Reference\clsREFTaxA.cs" />
+    <Compile Include="Base Classes\Reference\clsREFTaxADetItm.cs" />
+    <Compile Include="Base Classes\Reference\clsREFTaxADetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Reference\clsREFTaxAs.cs" />
+    <Compile Include="Base Classes\Reference\clsREFTaxGrp.cs" />
+    <Compile Include="Base Classes\Reference\clsREFTaxGrpDetItm.cs" />
+    <Compile Include="Base Classes\Reference\clsREFTaxGrpDetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Reference\clsREFTaxGrps.cs" />
+    <Compile Include="Base Classes\Reference\clsREFTerm.cs" />
+    <Compile Include="Base Classes\Reference\clsREFTerms.cs" />
+    <Compile Include="Base Classes\Reference\clsREFTerritory.cs" />
+    <Compile Include="Base Classes\Reference\clsREFTerritorys.cs" />
+    <Compile Include="Base Classes\Reference\clsREFUOM.cs" />
+    <Compile Include="Base Classes\Reference\clsREFUOMDetItm.cs" />
+    <Compile Include="Base Classes\Reference\clsREFUOMDetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Reference\clsREFUOMs.cs" />
+    <Compile Include="Base Classes\Reference\clsREFCurrDetCon.cs" />
+    <Compile Include="Base Classes\Reference\clsREFCurrDetCons.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\Reference\clsREFWorkOrderType.cs" />
+    <Compile Include="Base Classes\Reference\clsWorkOrderRequestType.cs" />
+    <Compile Include="Base Classes\Security\clsSECGrp.cs" />
+    <Compile Include="Base Classes\Security\clsSECGrpDetPerm.cs" />
+    <Compile Include="Base Classes\Security\clsSECGrpDetPerms.cs" />
+    <Compile Include="Base Classes\Security\clsSECGrps.cs" />
+    <Compile Include="Base Classes\Security\clsSECPerm.cs" />
+    <Compile Include="Base Classes\Security\clsSECPerms.cs" />
+    <Compile Include="Base Classes\Security\clsSECUser.cs" />
+    <Compile Include="Base Classes\Security\clsSECUserDetGrp.cs" />
+    <Compile Include="Base Classes\Security\clsSECUserDetGrps.cs" />
+    <Compile Include="Base Classes\Security\clsSECUserPermissionVw.cs" />
+    <Compile Include="Base Classes\Security\clsSECUserPermissionVws.cs" />
+    <Compile Include="Base Classes\Security\clsSECUsers.cs" />
+    <Compile Include="Base Classes\System\clsMSTFinColumn.cs" />
+    <Compile Include="Base Classes\System\clsMSTFinColumns.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsMSTFinDesigner.cs" />
+    <Compile Include="Base Classes\System\clsMSTFinDesigners.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsMSTFinDetail.cs" />
+    <Compile Include="Base Classes\System\clsMSTFinDetails.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsMSTFinMain.cs" />
+    <Compile Include="Base Classes\System\clsMSTFinMains.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsMSTFinRow.cs" />
+    <Compile Include="Base Classes\System\clsMSTFinRows.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsSYSApp.cs" />
+    <Compile Include="Base Classes\System\clsSYSAppDetItm.cs" />
+    <Compile Include="Base Classes\System\clsSYSAppDetItms.cs" />
+    <Compile Include="Base Classes\System\clsSYSApps.cs" />
+    <Compile Include="Base Classes\System\clsSYSAttachment.cs" />
+    <Compile Include="Base Classes\System\clsSYSAttachments.cs" />
+    <Compile Include="Base Classes\System\clsSYSCmpSetUp.cs" />
+    <Compile Include="Base Classes\System\clsSYSCmpSetUps.cs" />
+    <Compile Include="Base Classes\System\clsSYSCode.cs" />
+    <Compile Include="Base Classes\System\clsSYSCodes.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsSYSCounterGrp.cs" />
+    <Compile Include="Base Classes\System\clsSYSCounterGrpDetItm.cs" />
+    <Compile Include="Base Classes\System\clsSYSCounterGrpDetItms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsSYSCounterGrps.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsSYSDocType.cs" />
+    <Compile Include="Base Classes\System\clsSYSDocTypeDetNm.cs">
+    </Compile>
+    <Compile Include="Base Classes\System\clsSYSDocTypeDetNms.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsSYSDocTypes.cs" />
+    <Compile Include="Base Classes\System\clsSYSFinRep.cs" />
+    <Compile Include="Base Classes\System\clsSYSFinRepCol.cs" />
+    <Compile Include="Base Classes\System\clsSYSFinRepCols.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsSYSFinRepDet.cs" />
+    <Compile Include="Base Classes\System\clsSYSFinRepDetLine.cs" />
+    <Compile Include="Base Classes\System\clsSYSFinRepDetLines.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsSYSFinRepDets.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsSYSFinRepFooter.cs" />
+    <Compile Include="Base Classes\System\clsSYSFinRepFooters.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsSYSFinRepFootLines.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsSYSFinRepHead.cs" />
+    <Compile Include="Base Classes\System\clsSYSFinRepHeads.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsSYSFormSettingID.cs" />
+    <Compile Include="Base Classes\System\clsSYSFormSettingIDDet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsSYSIDcounter.cs" />
+    <Compile Include="Base Classes\System\clsSYSIDcounters.cs" />
+    <Compile Include="Base Classes\System\clsSYSListSetting.cs" />
+    <Compile Include="Base Classes\System\clsSYSLock.cs" />
+    <Compile Include="Base Classes\System\clsSYSLocks.cs" />
+    <Compile Include="Base Classes\System\clsSYSLog.cs" />
+    <Compile Include="Base Classes\System\clsSYSLogBatch.cs" />
+    <Compile Include="Base Classes\System\clsSYSLogBatchs.cs" />
+    <Compile Include="Base Classes\System\clsSYSLogs.cs" />
+    <Compile Include="Base Classes\System\clsSYSMsgApp.cs" />
+    <Compile Include="Base Classes\System\clsSYSMsgApps.cs" />
+    <Compile Include="Base Classes\System\clsSYSMsgFrm.cs" />
+    <Compile Include="Base Classes\System\clsSYSMsgFrms.cs" />
+    <Compile Include="Base Classes\System\clsSYSMsgList.cs" />
+    <Compile Include="Base Classes\System\clsSYSMsgLists.cs" />
+    <Compile Include="Base Classes\System\clsSYSMsgListText.cs" />
+    <Compile Include="Base Classes\System\clsSYSMsgListTexts.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsSYSOption.cs" />
+    <Compile Include="Base Classes\System\clsSYSOptions.cs" />
+    <Compile Include="Base Classes\System\clsSYSPeriod.cs" />
+    <Compile Include="Base Classes\System\clsSYSPeriods.cs" />
+    <Compile Include="Base Classes\System\clsSYSProcess.cs" />
+    <Compile Include="Base Classes\System\clsSYSProcesss.cs" />
+    <Compile Include="Base Classes\System\clsSYSRep.cs" />
+    <Compile Include="Base Classes\System\clsSYSRepCriteria.cs" />
+    <Compile Include="Base Classes\System\clsSYSRepCriterias.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsSYSRepOthers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsSYSRepPara.cs" />
+    <Compile Include="Base Classes\System\clsSYSRepParas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsSYSRepRpt.cs" />
+    <Compile Include="Base Classes\System\clsSYSRepRpts.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsSYSReps.cs" />
+    <Compile Include="Base Classes\System\clsSYSFinRepFootLine.cs" />
+    <Compile Include="Base Classes\System\clsTASAlert.cs" />
+    <Compile Include="Base Classes\System\clsTASAlertDetSub.cs" />
+    <Compile Include="Base Classes\System\clsTASAlerts.cs" />
+    <Compile Include="Base Classes\System\clsTASAlertDetSubs.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsTASToDo.cs" />
+    <Compile Include="Base Classes\System\clsTASToDoDetDocLists.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsTASToDoLogs.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsTASToDoDetCriterias.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsTASToDoDetSubs.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\System\clsTASToDoDetCriteria.cs">
+    </Compile>
+    <Compile Include="Base Classes\System\clsTASToDoDetSub.cs">
+    </Compile>
+    <Compile Include="Base Classes\TransParent\clsDocPayExpense.cs" />
+    <Compile Include="Base Classes\TransParent\clsDocPayItem.cs" />
+    <Compile Include="Base Classes\TransParent\clsDocSalePur.cs" />
+    <Compile Include="Base Classes\TransParent\DocFactory.cs" />
+    <Compile Include="Base Classes\WorkOrder\clsWorkOrder.cs" />
+    <Compile Include="Base Classes\WorkOrder\clsWorkOrderPartsUsed.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base Classes\WorkOrder\clsWorkOrderReq.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DocUtility\clsDocUtilityBackup.cs" />
+    <Compile Include="DocUtility\clsDocUtility.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Factory Classes\AP\clsAPPJFactory.cs" />
+    <Compile Include="Factory Classes\AP\clsAPBLFactory.cs" />
+    <Compile Include="Factory Classes\AP\clsAPPNFactory.cs" />
+    <Compile Include="Factory Classes\AP\clsAPPOAmendRequest.cs" />
+    <Compile Include="Factory Classes\AP\clsAPPOFactory.cs" />
+    <Compile Include="Factory Classes\AP\clsAPPDFactory.cs" />
+    <Compile Include="Factory Classes\AP\clsAPADJFactory.cs" />
+    <Compile Include="Factory Classes\AP\clsAPPSFactory.cs" />
+    <Compile Include="Factory Classes\AP\clsAPPurchaseReturnRequest.cs" />
+    <Compile Include="Factory Classes\AP\clsAPRQFactory.cs" />
+    <Compile Include="Factory Classes\AR\clsARDOFactory.cs" />
+    <Compile Include="Factory Classes\AR\clsARDOTrackFactory.cs" />
+    <Compile Include="Factory Classes\AR\clsARIVCSDFactory.cs" />
+    <Compile Include="Factory Classes\AR\clsARIVFactory.cs" />
+    <Compile Include="Factory Classes\AR\clsARPYFactory.cs" />
+    <Compile Include="Factory Classes\AR\clsARROFactory.cs" />
+    <Compile Include="Factory Classes\AP\clsAPPYFactory.cs" />
+    <Compile Include="Factory Classes\AR\clsARCTFactory.cs" />
+    <Compile Include="Factory Classes\AR\clsARPLFactory.cs" />
+    <Compile Include="Factory Classes\AR\clsARSaleReturnRequest.cs" />
+    <Compile Include="Factory Classes\AR\clsARSOFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Factory Classes\AR\clsNSSalesPOLinkFactory.cs" />
+    <Compile Include="Factory Classes\CSG\clsCSCPOFactory.cs" />
+    <Compile Include="Factory Classes\CSG\clsCSCSIFactory.cs" />
+    <Compile Include="Factory Classes\CSG\clsCSCPDFactory.cs" />
+    <Compile Include="Factory Classes\CSG\clsCSCPSFactory.cs" />
+    <Compile Include="Factory Classes\GL\clsGLRCFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Factory Classes\GL\clsGLRVFactory.cs" />
+    <Compile Include="Factory Classes\GL\clsGLDPFactory.cs" />
+    <Compile Include="Factory Classes\GL\clsGLJNLFactory.cs" />
+    <Compile Include="Factory Classes\IN\clsINTRNFactory.cs" />
+    <Compile Include="Factory Classes\IN\clsINADJFactory.cs" />
+    <Compile Include="Factory Classes\IN\clsINMFNFactory.cs" />
+    <Compile Include="Factory Classes\Master\clsKeyCustomerFactory.cs" />
+    <Compile Include="Factory Classes\Master\clsKeyCustomerFactoryImport.cs" />
+    <Compile Include="Factory Classes\Master\clsMSTConManageFactory.cs" />
+    <Compile Include="Factory Classes\Master\clsMSTConOpenBalFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Factory Classes\Master\clsMSTShipNameFactory.cs" />
+    <Compile Include="Factory Classes\Master\clsMSTStockCountFactory.cs" />
+    <Compile Include="Factory Classes\Master\clsMSTVehicleFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFWorkOrderRequestTypeFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFWorkOrderTypeFactory.cs" />
+    <Compile Include="Factory Classes\System\clsSYSFinRepFactory.cs" />
+    <Compile Include="Factory Classes\System\clsSYSOptionDAddrFactory.cs" />
+    <Compile Include="Factory Classes\System\clsTASAlertFactory.cs" />
+    <Compile Include="Factory Classes\System\clsTASToDoFactory.cs" />
+    <Compile Include="Factory Classes\WorkOrder\clsWorkOrderFactory.cs" />
+    <Compile Include="Global Classes\clsGEmail.cs" />
+    <Compile Include="Global Classes\clsGlobalBO.cs" />
+    <Compile Include="DocTmp\clsDocConHisTmp.cs" />
+    <Compile Include="DocTmp\clsDocConTmp.cs" />
+    <Compile Include="DocTmp\clsDocItmHisTmp.cs" />
+    <Compile Include="DocTmp\clsDocItmGrpTmp.cs" />
+    <Compile Include="DocTmp\clsDocItmTmp.cs" />
+    <Compile Include="DocTmp\DocAccLogtmp.cs" />
+    <Compile Include="Base Classes\TransParent\clsDocument.cs" />
+    <Compile Include="DocUtility\clsDocComUtility.cs" />
+    <Compile Include="DocUtility\IAFSchemav_1_0_0.cs" />
+    <Compile Include="DocUtility\ObjectXMLSerializer.cs" />
+    <Compile Include="Factory Classes\AR\clsARADJFactory.cs" />
+    <Compile Include="Factory Classes\AR\clsARQOFactory.cs" />
+    <Compile Include="Factory Classes\AR\clsDocListFactory.cs" />
+    <Compile Include="Factory Classes\clsListFactory.cs" />
+    <Compile Include="Factory Classes\Master\clsMSTAccBranchFactory.cs" />
+    <Compile Include="Factory Classes\Master\clsMSTAccDeptFactory.cs" />
+    <Compile Include="Factory Classes\Master\clsMSTAccFactory.cs" />
+    <Compile Include="Factory Classes\Master\clsMSTAccTranGrpFactory.cs" />
+    <Compile Include="Factory Classes\Master\clsMSTBudgetFactory.cs" />
+    <Compile Include="Factory Classes\Master\clsMSTConFactory.cs" />
+    <Compile Include="Factory Classes\Master\clsMSTItmFactory.cs" />
+    <Compile Include="Factory Classes\Master\clsMSTItmLocOpenBalFactory.cs" />
+    <Compile Include="Factory Classes\Master\clsMSTJobFactory.cs" />
+    <Compile Include="Factory Classes\Master\clsMSTPriceInfoFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Factory Classes\Master\clsMSTSalesRepFactory.cs" />
+    <Compile Include="Factory Classes\Master\clsMSTTimesheetFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFBrandFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFCatFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFCurrFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFScaleFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFTaxAFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFTaxGrpFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFUOMFactory.cs" />
+    <Compile Include="Factory Classes\Security\clsRecAccessFactory.cs" />
+    <Compile Include="Factory Classes\Security\clsSECChangePasswordFactory.cs" />
+    <Compile Include="Factory Classes\clsTestFactory.cs" />
+    <Compile Include="Factory Classes\System\clsSysRepListFactory.cs" />
+    <Compile Include="Factory Classes\System\clsSYSRepOthersFactory.cs" />
+    <Compile Include="Factory Classes\System\clsSYSRepRptFactory.cs" />
+    <Compile Include="frmMsgBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMsgBox.Designer.cs">
+      <DependentUpon>frmMsgBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Global Classes\clsGExcep.cs" />
+    <Compile Include="Global Classes\clsGVar.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="List Classes\clsARList.cs" />
+    <Compile Include="List Classes\clsMASList.cs" />
+    <Compile Include="List Classes\clsREFList.cs" />
+    <Compile Include="List Classes\clsSECList.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFBankFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFColorFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFDocGrpFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFEqptTypeFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFIDFormatFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFIndustryFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFInterestFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFJobCostTypeFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFJobGrpFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFJobPhaseFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFJobTaskFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFLocFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFOverHeadFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFPackingTypeFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFPayModeFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFShipViaFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFTermFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFTerritoryFactory.cs" />
+    <Compile Include="List Classes\clsSYSList.cs" />
+    <Compile Include="MsgBoxGrid2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MsgBoxGrid2.Designer.cs">
+      <DependentUpon>MsgBoxGrid2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Utility Classes\clsBaseUtility.cs" />
+    <Compile Include="Factory Classes\clsMsgBoxFactory.cs" />
+    <Compile Include="Factory Classes\System\clsSYSOptionFactory.cs" />
+    <Compile Include="Factory Classes\Reference\clsREFAccGrpFactory.cs" />
+    <Compile Include="Factory Classes\System\clsSYSCmpSetupFactory.cs" />
+    <Compile Include="Factory Classes\System\clsSYSCodeFactory.cs" />
+    <Compile Include="Factory Classes\System\clsSYSMsgListTextFactory.cs" />
+    <Compile Include="Factory Classes\System\clsSysPeriodFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Global Classes\clsGEnum.cs" />
+    <Compile Include="Utility Classes\clsAppInforUtility.cs" />
+    <Compile Include="Utility Classes\clsEvaluated.cs" />
+    <Compile Include="Utility Classes\clsSECPermUtility.cs" />
+    <Compile Include="Factory Classes\Security\clsLoginFactory.cs" />
+    <Compile Include="Factory Classes\Security\clsSECGrpFactory.cs" />
+    <Compile Include="Global Classes\clsGFunc.cs" />
+    <Compile Include="Factory Classes\Security\clsSECUserFactory.cs" />
+    <Compile Include="Global Classes\clsDatabase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility Classes\clsSysAuditLogUtility.cs" />
+    <Compile Include="Utility Classes\clsSysFormMessageUtility.cs" />
+    <Compile Include="Utility Classes\clsSysIDCounterUtility.cs" />
+    <Compile Include="Utility Classes\clsSysLockUtility.cs" />
+    <Compile Include="Utility Classes\clsSysMessageUtility.cs" />
+    <Compile Include="Utility Classes\clsSysOptionUtility.cs" />
+    <Compile Include="Utility Classes\clsSysProcessUtility.cs" />
+    <Compile Include="Utility Classes\ErrorRecord.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Base Classes\AR\clsARPLDetPackItms.resx">
+      <DependentUpon>clsARPLDetPackItms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMsgBox.resx">
+      <DependentUpon>frmMsgBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MsgBoxGrid2.resx">
+      <DependentUpon>MsgBoxGrid2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\diskette_ok_32.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\DataSources\ARQODetItm.datasource" />
+    <None Include="Resources\close_a_32.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OK1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Error1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ErrorInfo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Information.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Question.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Serious.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BOLib04Nov2011.snk" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\Help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Alert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,3024 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{678535CF-804B-4532-B456-067BDE6DA26E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WinUI</RootNamespace>
+    <AssemblyName>BOSS</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ManifestCertificateThumbprint>E9055F4066247BDBB5B0AA7E578404902C147259</ManifestCertificateThumbprint>
+    <ManifestKeyFile>WinUI_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>false</GenerateManifests>
+    <SignManifests>false</SignManifests>
+    <ApplicationIcon>boss.ico</ApplicationIcon>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>0</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ActiveReports.Chart, Version=6.3.4797.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ActiveReports.Design6, Version=6.3.4797.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ActiveReports.Document, Version=6.3.4797.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ActiveReports.HtmlExport, Version=6.3.4797.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ActiveReports.PdfExport, Version=6.3.4797.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ActiveReports.RtfExport, Version=6.3.4797.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ActiveReports.TextExport, Version=6.3.4797.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ActiveReports.Viewer6, Version=6.3.4797.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ActiveReports.XlsExport, Version=6.3.4797.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ActiveReports6, Version=6.3.4797.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=12.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=12.0.1100.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=12.0.1100.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ClientDoc, Version=12.0.1100.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.Controllers, Version=12.0.1100.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataDefModel, Version=12.0.1100.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ReportDefModel, Version=12.0.1100.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=12.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=12.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=12.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Csla, Version=3.5.1.0, Culture=neutral, PublicKeyToken=93be5fdc093e4c30, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Csla.dll</HintPath>
+    </Reference>
+    <Reference Include="GdPicture.NET.10, Version=10.1.0.11, Culture=neutral, PublicKeyToken=b62102bee80b7c03, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\GdPicture.NET.10.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Documents.Reports.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Shared.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.Misc.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.SupportDialogs.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinCalcManager.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinCalcManager.v11.1.FormulaBuilder, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinDataSource.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinDock.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinEditors.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinExplorerBar.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics2.Win.UltraWinGrid.DocumentExport.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinGrid.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinListView.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinMaskedEdit.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinPrintPreviewDialog.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinSchedule.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinSpellChecker.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinStatusBar.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinTabbedMdi.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinTabControl.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinToolbars.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinTree.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.v11.1.Design, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics3.Documents.Excel.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics3.Win.UltraWinGrid.ExcelExport.v11.1, Version=11.1.20111.2026, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Interop.FAXCOMLib">
+      <HintPath>..\Lib\Interop.FAXCOMLib.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Outlook, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.Web.WebView2.Core, Version=1.0.1905.0, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.1905-prerelease\lib\net45\Microsoft.Web.WebView2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.WinForms, Version=1.0.1905.0, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.1905-prerelease\lib\net45\Microsoft.Web.WebView2.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Wpf, Version=1.0.1905.0, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.1905-prerelease\lib\net45\Microsoft.Web.WebView2.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.27.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector Net 8.0.27\Assemblies\v4.8\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Design">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Net">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Transactions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Windows\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Deployment">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TAReport, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\TAReport.dll</HintPath>
+    </Reference>
+    <Reference Include="TAUtil, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\TAUtil.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\AR\frmARQO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AR\frmARQO.designer.cs">
+      <DependentUpon>frmARQO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AR\frmARRO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AR\frmARRO.designer.cs">
+      <DependentUpon>frmARRO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AR\frmARSO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AR\frmARSO.designer.cs">
+      <DependentUpon>frmARSO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmDocList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDocList.Designer.cs">
+      <DependentUpon>frmDocList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmLoading.designer.cs">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmShowProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmShowProgress.designer.cs">
+      <DependentUpon>frmShowProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmKeyCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmKeyCustomer.Designer.cs">
+      <DependentUpon>frmKeyCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmKeyCustomersImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmKeyCustomersImport.Designer.cs">
+      <DependentUpon>frmKeyCustomersImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTItmKittAssBal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTItmKittAssBal.Designer.cs">
+      <DependentUpon>frmMSTItmKittAssBal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTItmInvBal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTItmInvBal.Designer.cs">
+      <DependentUpon>frmMSTItmInvBal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTConManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTConManage.Designer.cs">
+      <DependentUpon>frmMSTConManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTConOpenBal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTConOpenBal.Designer.cs">
+      <DependentUpon>frmMSTConOpenBal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTPriceInfoUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTPriceInfoUpdate.Designer.cs">
+      <DependentUpon>frmMSTPriceInfoUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmItemStockTake.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmItemStockTake.Designer.cs">
+      <DependentUpon>frmItemStockTake.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTAccOpenBal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTAccOpenBal.Designer.cs">
+      <DependentUpon>frmMSTAccOpenBal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTVehicle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTVehicle.Designer.cs">
+      <DependentUpon>frmMSTVehicle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmDocRelationship.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmDocRelationship.Designer.cs">
+      <DependentUpon>frmDocRelationship.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmExcelImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmExcelImport.Designer.cs">
+      <DependentUpon>frmExcelImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmInsertAlternateItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmInsertAlternateItem.Designer.cs">
+      <DependentUpon>frmInsertAlternateItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmInsertPO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmInsertPO.Designer.cs">
+      <DependentUpon>frmInsertPO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmInsertSalesBL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmInsertSalesBL.Designer.cs">
+      <DependentUpon>frmInsertSalesBL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmInsertSalesPO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmInsertSalesPO.Designer.cs">
+      <DependentUpon>frmInsertSalesPO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmItmHistorySale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmItmHistorySale.Designer.cs">
+      <DependentUpon>frmItmHistorySale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmItmPrevPrice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmItmPrevPrice.Designer.cs">
+      <DependentUpon>frmItmPrevPrice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmItmUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmItmUpdate.Designer.cs">
+      <DependentUpon>frmItmUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmPopupWMSInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmPopupWMSInfo.Designer.cs">
+      <DependentUpon>frmPopupWMSInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmPopupEstoreInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmPopupEstoreInfo.Designer.cs">
+      <DependentUpon>frmPopupEstoreInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmPrintCond.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmPrintCond.designer.cs">
+      <DependentUpon>frmPrintCond.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmRecordSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmRecordSearch.designer.cs">
+      <DependentUpon>frmRecordSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmSelectSecurityGrp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmSelectSecurityGrp.Designer.cs">
+      <DependentUpon>frmSelectSecurityGrp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmDocVendSendListSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmDocVendSendListSelect.Designer.cs">
+      <DependentUpon>frmDocVendSendListSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmVehicleDataImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmVehicleDataImport.Designer.cs">
+      <DependentUpon>frmVehicleDataImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmWOSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmWOSearch.Designer.cs">
+      <DependentUpon>frmWOSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFWorkOrderReqType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFWorkOrderReqType.Designer.cs">
+      <DependentUpon>frmREFWorkOrderReqType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFWorkOrderType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFWorkOrderType.Designer.cs">
+      <DependentUpon>frmREFWorkOrderType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmEmail.Designer.cs">
+      <DependentUpon>frmEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmInput.Designer.cs">
+      <DependentUpon>frmInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmPageSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmPageSetup.Designer.cs">
+      <DependentUpon>frmPageSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmPageSetupRpx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmPageSetupRpx.Designer.cs">
+      <DependentUpon>frmPageSetupRpx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmPrint.Designer.cs">
+      <DependentUpon>frmPrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmItmHisSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmItmHisSummary.Designer.cs">
+      <DependentUpon>frmItmHisSummary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmDateCriteria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmDateCriteria.Designer.cs">
+      <DependentUpon>frmDateCriteria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmFilter.Designer.cs">
+      <DependentUpon>frmFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmInsertDataMatrix.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmInsertDataMatrix.Designer.cs">
+      <DependentUpon>frmInsertDataMatrix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTAccOpenBalSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTAccOpenBalSelect.Designer.cs">
+      <DependentUpon>frmMSTAccOpenBalSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTCon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTCon.designer.cs">
+      <DependentUpon>frmMSTCon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTItmOpeningBal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTItmOpeningBal.Designer.cs">
+      <DependentUpon>frmMSTItmOpeningBal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTPriceInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTPriceInfo.designer.cs">
+      <DependentUpon>frmMSTPriceInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTShipName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTShipName.designer.cs">
+      <DependentUpon>frmMSTShipName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmCustomerStatement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmCustomerStatement.Designer.cs">
+      <DependentUpon>frmCustomerStatement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmImportSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmImportSelection.Designer.cs">
+      <DependentUpon>frmImportSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmPeriodChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmPeriodChooser.Designer.cs">
+      <DependentUpon>frmPeriodChooser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmSendSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmSendSelection.Designer.cs">
+      <DependentUpon>frmSendSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmDocSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmDocSelection.Designer.cs">
+      <DependentUpon>frmDocSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmInsertPackingList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmInsertPackingList.Designer.cs">
+      <DependentUpon>frmInsertPackingList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmBatchSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmBatchSelection.Designer.cs">
+      <DependentUpon>frmBatchSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmPopupApplyDis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmPopupApplyDis.Designer.cs">
+      <DependentUpon>frmPopupApplyDis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmInsertCSI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmInsertCSI.Designer.cs">
+      <DependentUpon>frmInsertCSI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmDocSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmDocSearch.designer.cs">
+      <DependentUpon>frmDocSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmItmQtyDeliveredHis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmItmQtyDeliveredHis.Designer.cs">
+      <DependentUpon>frmItmQtyDeliveredHis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmItmHistoryPurchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmItmHistoryPurchase.Designer.cs">
+      <DependentUpon>frmItmHistoryPurchase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmDocCopy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmDocCopy.Designer.cs">
+      <DependentUpon>frmDocCopy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmApplyIV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmApplyIV.designer.cs">
+      <DependentUpon>frmApplyIV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmInsertCPO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmInsertCPO.Designer.cs">
+      <DependentUpon>frmInsertCPO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmPayment.designer.cs">
+      <DependentUpon>frmPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmPopupApplyGain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmPopupApplyGain.Designer.cs">
+      <DependentUpon>frmPopupApplyGain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmInsertPD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmInsertPD.Designer.cs">
+      <DependentUpon>frmInsertPD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmDOIVCheckFail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmDOIVCheckFail.Designer.cs">
+      <DependentUpon>frmDOIVCheckFail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmInsertSO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmInsertSO.Designer.cs">
+      <DependentUpon>frmInsertSO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmInsertData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmInsertData.Designer.cs">
+      <DependentUpon>frmInsertData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmDOIVConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmDOIVConfirm.Designer.cs">
+      <DependentUpon>frmDOIVConfirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmBatchEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmBatchEntry.Designer.cs">
+      <DependentUpon>frmBatchEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmAssemblyEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmAssemblyEntry.Designer.cs">
+      <DependentUpon>frmAssemblyEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmItmEnquiry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmItmEnquiry.Designer.cs">
+      <DependentUpon>frmItmEnquiry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmList.Designer.cs">
+      <DependentUpon>frmList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmGrdFormat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmGrdFormat.Designer.cs">
+      <DependentUpon>frmGrdFormat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTJob.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTJob.designer.cs">
+      <DependentUpon>frmMSTJob.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTTimesheet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTTimesheet.Designer.cs">
+      <DependentUpon>frmMSTTimesheet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmAttachment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmAttachment.Designer.cs">
+      <DependentUpon>frmAttachment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmDocListDet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmDocListDet.Designer.cs">
+      <DependentUpon>frmDocListDet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmSpecialCalculation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PoupBrowser\frmSpecialCalculation.designer.cs">
+      <DependentUpon>frmSpecialCalculation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmAccSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmAccSelection.Designer.cs">
+      <DependentUpon>frmAccSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmFavouriteReportSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmFavouriteReportSetting.Designer.cs">
+      <DependentUpon>frmFavouriteReportSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmPrintSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmPrintSelection.Designer.cs">
+      <DependentUpon>frmPrintSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmPrintSelectionList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmPrintSelectionList.Designer.cs">
+      <DependentUpon>frmPrintSelectionList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmRepSearchItm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmRepSearchItm.Designer.cs">
+      <DependentUpon>frmRepSearchItm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmReportViewer.Designer.cs">
+      <DependentUpon>frmReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmRepSearchCon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmRepSearchCon.Designer.cs">
+      <DependentUpon>frmRepSearchCon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmRepSearchDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmRepSearchDetail.Designer.cs">
+      <DependentUpon>frmRepSearchDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmReportDirectory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmReportDirectory.Designer.cs">
+      <DependentUpon>frmReportDirectory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmReportExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmReportExport.Designer.cs">
+      <DependentUpon>frmReportExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmRpxViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmRpxViewer.Designer.cs">
+      <DependentUpon>frmRpxViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmRptFileSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmRptFileSetting.Designer.cs">
+      <DependentUpon>frmRptFileSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\frmStatementEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\frmStatementEmail.Designer.cs">
+      <DependentUpon>frmStatementEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalAndUtilityClasses\clsDocDetUtility.cs" />
+    <Compile Include="GlobalAndUtilityClasses\clsDocHDRUtility.cs" />
+    <Compile Include="GlobalAndUtilityClasses\clsOutlookEmail.cs" />
+    <Compile Include="GlobalAndUtilityClasses\clsGlobalUI.cs" />
+    <Compile Include="Forms\Masters\frmItemCopy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmItemCopy.Designer.cs">
+      <DependentUpon>frmItemCopy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTAccTranGrp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTAccTranGrp.Designer.cs">
+      <DependentUpon>frmMSTAccTranGrp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTItm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTItm.designer.cs">
+      <DependentUpon>frmMSTItm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTItmMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTItmMaster.Designer.cs">
+      <DependentUpon>frmMSTItmMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTAcc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTAcc.Designer.cs">
+      <DependentUpon>frmMSTAcc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTAccBranch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTAccBranch.Designer.cs">
+      <DependentUpon>frmMSTAccBranch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTAccDept.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTAccDept.Designer.cs">
+      <DependentUpon>frmMSTAccDept.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTSalesRep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTSalesRep.designer.cs">
+      <DependentUpon>frmMSTSalesRep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSearchInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSearchInfo.Designer.cs">
+      <DependentUpon>frmSearchInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PopupTreeView\frmPopupTreeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PopupTreeView\frmPopupTreeView.Designer.cs">
+      <DependentUpon>frmPopupTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Security\frmSECChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Security\frmSECChangePassword.Designer.cs">
+      <DependentUpon>frmSECChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Security\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Security\frmLogin.designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFBrand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFBrand.designer.cs">
+      <DependentUpon>frmREFBrand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFCat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFCat.designer.cs">
+      <DependentUpon>frmREFCat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFIDFormat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFIDFormat.designer.cs">
+      <DependentUpon>frmREFIDFormat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFInterest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFInterest.designer.cs">
+      <DependentUpon>frmREFInterest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFOverHead.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFOverHead.designer.cs">
+      <DependentUpon>frmREFOverHead.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFPayMode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFPayMode.designer.cs">
+      <DependentUpon>frmREFPayMode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFShipVia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFShipVia.designer.cs">
+      <DependentUpon>frmREFShipVia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFTerm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFTerm.designer.cs">
+      <DependentUpon>frmREFTerm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFTerritory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFTerritory.designer.cs">
+      <DependentUpon>frmREFTerritory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFPackingType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFPackingType.Designer.cs">
+      <DependentUpon>frmREFPackingType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFScale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFScale.Designer.cs">
+      <DependentUpon>frmREFScale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFTaxA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFTaxA.designer.cs">
+      <DependentUpon>frmREFTaxA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFColor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFColor.Designer.cs">
+      <DependentUpon>frmREFColor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFCurr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFCurr.designer.cs">
+      <DependentUpon>frmREFCurr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFDocGrp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFDocGrp.Designer.cs">
+      <DependentUpon>frmREFDocGrp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFTaxGrp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFTaxGrp.designer.cs">
+      <DependentUpon>frmREFTaxGrp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFUOM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFUOM.Designer.cs">
+      <DependentUpon>frmREFUOM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Main\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Main\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFBank.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFBank.Designer.cs">
+      <DependentUpon>frmREFBank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFAccGrp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFAccGrp.Designer.cs">
+      <DependentUpon>frmREFAccGrp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFEqptType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFEqptType.Designer.cs">
+      <DependentUpon>frmREFEqptType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFIndustry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFIndustry.Designer.cs">
+      <DependentUpon>frmREFIndustry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFJobCostType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFJobCostType.Designer.cs">
+      <DependentUpon>frmREFJobCostType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFJobGrp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFJobGrp.Designer.cs">
+      <DependentUpon>frmREFJobGrp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFJobPhase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFJobPhase.Designer.cs">
+      <DependentUpon>frmREFJobPhase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFJobTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFJobTask.Designer.cs">
+      <DependentUpon>frmREFJobTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\References\frmREFLoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\References\frmREFLoc.Designer.cs">
+      <DependentUpon>frmREFLoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalAndUtilityClasses\clsReport.cs" />
+    <Compile Include="GlobalAndUtilityClasses\clsComFrmUtility.cs" />
+    <Compile Include="GlobalAndUtilityClasses\HelpUtility.cs" />
+    <Compile Include="GlobalAndUtilityClasses\ReportFactory.cs" />
+    <Compile Include="NewActiveReport1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewActiveReport1.Designer.cs">
+      <DependentUpon>NewActiveReport1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTBudget.Designer.cs">
+      <DependentUpon>frmMSTBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTBudgetCopy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Masters\frmMSTBudgetCopy.Designer.cs">
+      <DependentUpon>frmMSTBudgetCopy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HeaderCheckBoxCreationFilter.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+    <Content Include="EmailCmpLogoPath\bh global.png" />
+    <Content Include="EmailSigPath\Email Signature 2019 %28APM 2020%29.jpg" />
+    <Content Include="Resources\approvalbutton.png" />
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Resources\approvalbutton1.png" />
+    <Content Include="Resources\approvedpic.png" />
+    <None Include="Resources\approvedpic1.png" />
+    <None Include="Resources\dark_grey_16.png" />
+    <None Include="Resources\dark_grey_14.png" />
+    <None Include="Resources\blue_border_16.png" />
+    <None Include="Resources\blue_border_14.png" />
+    <None Include="Resources\blue_circle_16.png" />
+    <None Include="Resources\blue_circle_14.png" />
+    <None Include="Resources\blue_16.png" />
+    <None Include="Resources\blue_14.png" />
+    <Content Include="Resources\download_01.png" />
+    <Content Include="Resources\download_01_16_png.png" />
+    <None Include="Resources\eraser.png" />
+    <None Include="Resources\Eraser1.png" />
+    <None Include="Resources\eye_off.png" />
+    <None Include="Resources\eye_open.png" />
+    <None Include="Resources\orange_24.png" />
+    <None Include="Resources\green_16.png" />
+    <None Include="Resources\green_24.png" />
+    <None Include="Resources\orange_16.png" />
+    <None Include="Resources\green_14.png" />
+    <None Include="Resources\orange_14.png" />
+    <None Include="Resources\grey_14.png" />
+    <None Include="Resources\grey_16.png" />
+    <None Include="Resources\green_border_16.png" />
+    <None Include="Resources\green_border_14.png" />
+    <None Include="Resources\green_border_161.png" />
+    <None Include="Resources\filter_refresh_32.png" />
+    <None Include="Resources\filter_refresh_321.png" />
+    <None Include="Resources\filter_refresh_322.png" />
+    <None Include="Resources\light_blue_circle_14.png" />
+    <None Include="Resources\light_blue_circle_16.png" />
+    <Content Include="Resources\OutLookSend.PNG" />
+    <None Include="Resources\RequestDoc.png" />
+    <None Include="Resources\Request.png" />
+    <None Include="Resources\RequestDoc1.png" />
+    <None Include="Resources\RequestDoc3.png" />
+    <None Include="Resources\red_16.png" />
+    <None Include="Resources\red_24.png" />
+    <None Include="Resources\red_14.png" />
+    <Content Include="Resources\Send-1.png" />
+    <None Include="Resources\SendRequest.png" />
+    <None Include="Resources\sendEmail.png" />
+    <None Include="Resources\SendEmail_32.png" />
+    <None Include="Resources\SendEmailBlue_32.png" />
+    <None Include="Resources\SendEmailBlue_24.png" />
+    <Content Include="Resources\Sent-2.png" />
+    <None Include="bin\Debug\BOSS.exe.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\DataSources\BOLib.ARDODetItm.datasource" />
+    <None Include="Properties\DataSources\BOLib.ARDOFactory.datasource" />
+    <None Include="Properties\DataSources\BOLib.ARSO.datasource" />
+    <None Include="Properties\DataSources\BOLib.ARSOFactory.datasource" />
+    <None Include="Properties\DataSources\BOLib.MSTSalesRepApprover.datasource" />
+    <None Include="Properties\DataSources\BOLib.MSTSalesReps.datasource" />
+    <None Include="Resources\UpdateStatus.png" />
+    <None Include="Resources\WorkOrder.png" />
+    <None Include="Resources\Vehicle.png" />
+    <EmbeddedResource Include="Forms\AR\frmARQO.resx">
+      <DependentUpon>frmARQO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AR\frmARRO.resx">
+      <DependentUpon>frmARRO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AR\frmARSO.resx">
+      <DependentUpon>frmARSO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDocList.resx">
+      <DependentUpon>frmDocList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmLoading.resx">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmShowProgress.resx">
+      <DependentUpon>frmShowProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main\AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmKeyCustomer.resx">
+      <DependentUpon>frmKeyCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmKeyCustomersImport.resx">
+      <DependentUpon>frmKeyCustomersImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmMSTItmKittAssBal.resx">
+      <DependentUpon>frmMSTItmKittAssBal.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmMSTItmInvBal.resx">
+      <DependentUpon>frmMSTItmInvBal.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmMSTConManage.resx">
+      <DependentUpon>frmMSTConManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmMSTConOpenBal.resx">
+      <DependentUpon>frmMSTConOpenBal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmMSTPriceInfoUpdate.resx">
+      <DependentUpon>frmMSTPriceInfoUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmItemStockTake.resx">
+      <DependentUpon>frmItemStockTake.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmMSTAccOpenBal.resx">
+      <DependentUpon>frmMSTAccOpenBal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmMSTVehicle.resx">
+      <DependentUpon>frmMSTVehicle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmDocRelationship.resx">
+      <DependentUpon>frmDocRelationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmExcelImport.resx">
+      <DependentUpon>frmExcelImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmInsertAlternateItem.resx">
+      <DependentUpon>frmInsertAlternateItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmInsertPO.resx">
+      <DependentUpon>frmInsertPO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmInsertSalesBL.resx">
+      <DependentUpon>frmInsertSalesBL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmInsertSalesPO.resx">
+      <DependentUpon>frmInsertSalesPO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmItmHistorySale.resx">
+      <DependentUpon>frmItmHistorySale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmItmPrevPrice.resx">
+      <DependentUpon>frmItmPrevPrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmItmUpdate.resx">
+      <DependentUpon>frmItmUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmPopupWMSInfo.resx">
+      <DependentUpon>frmPopupWMSInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmPopupEstoreInfo.resx">
+      <DependentUpon>frmPopupEstoreInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmPrintCond.resx">
+      <DependentUpon>frmPrintCond.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmRecordSearch.resx">
+      <DependentUpon>frmRecordSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmSelectSecurityGrp.resx">
+      <DependentUpon>frmSelectSecurityGrp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmDocVendSendListSelect.resx">
+      <DependentUpon>frmDocVendSendListSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmVehicleDataImport.resx">
+      <DependentUpon>frmVehicleDataImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmWOSearch.resx">
+      <DependentUpon>frmWOSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFWorkOrderReqType.resx">
+      <DependentUpon>frmREFWorkOrderReqType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFWorkOrderType.resx">
+      <DependentUpon>frmREFWorkOrderType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmEmail.resx">
+      <DependentUpon>frmEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmInput.resx">
+      <DependentUpon>frmInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmPageSetup.resx">
+      <DependentUpon>frmPageSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmPageSetupRpx.resx">
+      <DependentUpon>frmPageSetupRpx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmPrint.resx">
+      <DependentUpon>frmPrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmItmHisSummary.resx">
+      <DependentUpon>frmItmHisSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmDateCriteria.resx">
+      <DependentUpon>frmDateCriteria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmFilter.resx">
+      <DependentUpon>frmFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmInsertDataMatrix.resx">
+      <DependentUpon>frmInsertDataMatrix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmMSTAccOpenBalSelect.resx">
+      <DependentUpon>frmMSTAccOpenBalSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmMSTCon.resx">
+      <DependentUpon>frmMSTCon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmMSTItmOpeningBal.resx">
+      <DependentUpon>frmMSTItmOpeningBal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmMSTPriceInfo.resx">
+      <DependentUpon>frmMSTPriceInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmMSTShipName.resx">
+      <DependentUpon>frmMSTShipName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmCustomerStatement.resx">
+      <DependentUpon>frmCustomerStatement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmImportSelection.resx">
+      <DependentUpon>frmImportSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmPeriodChooser.resx">
+      <DependentUpon>frmPeriodChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmSendSelection.resx">
+      <DependentUpon>frmSendSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmDocSelection.resx">
+      <DependentUpon>frmDocSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmInsertPackingList.resx">
+      <DependentUpon>frmInsertPackingList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmBatchSelection.resx">
+      <DependentUpon>frmBatchSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmPopupApplyDis.resx">
+      <DependentUpon>frmPopupApplyDis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmInsertCSI.resx">
+      <DependentUpon>frmInsertCSI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmDocSearch.resx">
+      <DependentUpon>frmDocSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmItmQtyDeliveredHis.resx">
+      <DependentUpon>frmItmQtyDeliveredHis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmItmHistoryPurchase.resx">
+      <DependentUpon>frmItmHistoryPurchase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmDocCopy.resx">
+      <DependentUpon>frmDocCopy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmApplyIV.resx">
+      <DependentUpon>frmApplyIV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmInsertCPO.resx">
+      <DependentUpon>frmInsertCPO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmPayment.resx">
+      <DependentUpon>frmPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmPopupApplyGain.resx">
+      <DependentUpon>frmPopupApplyGain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmInsertPD.resx">
+      <DependentUpon>frmInsertPD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmDOIVCheckFail.resx">
+      <DependentUpon>frmDOIVCheckFail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmInsertSO.resx">
+      <DependentUpon>frmInsertSO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmInsertData.resx">
+      <DependentUpon>frmInsertData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmDOIVConfirm.resx">
+      <DependentUpon>frmDOIVConfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmBatchEntry.resx">
+      <DependentUpon>frmBatchEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmAssemblyEntry.resx">
+      <DependentUpon>frmAssemblyEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmItmEnquiry.resx">
+      <DependentUpon>frmItmEnquiry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmList.resx">
+      <DependentUpon>frmList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGrdFormat.resx">
+      <DependentUpon>frmGrdFormat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmMSTJob.resx">
+      <DependentUpon>frmMSTJob.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmMSTTimesheet.resx">
+      <DependentUpon>frmMSTTimesheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmAttachment.resx">
+      <DependentUpon>frmAttachment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmDocListDet.resx">
+      <DependentUpon>frmDocListDet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PoupBrowser\frmSpecialCalculation.resx">
+      <DependentUpon>frmSpecialCalculation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmAccSelection.resx">
+      <DependentUpon>frmAccSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmFavouriteReportSetting.resx">
+      <DependentUpon>frmFavouriteReportSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmPrintSelection.resx">
+      <DependentUpon>frmPrintSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmPrintSelectionList.resx">
+      <DependentUpon>frmPrintSelectionList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmRepSearchItm.resx">
+      <DependentUpon>frmRepSearchItm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmReportViewer.resx">
+      <DependentUpon>frmReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmRepSearchCon.resx">
+      <DependentUpon>frmRepSearchCon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmRepSearchDetail.resx">
+      <DependentUpon>frmRepSearchDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmReportDirectory.resx">
+      <DependentUpon>frmReportDirectory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmReportExport.resx">
+      <DependentUpon>frmReportExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmRpxViewer.resx">
+      <DependentUpon>frmRpxViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmItemCopy.resx">
+      <DependentUpon>frmItemCopy.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmMSTAccTranGrp.resx">
+      <DependentUpon>frmMSTAccTranGrp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmMSTItm.resx">
+      <DependentUpon>frmMSTItm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmMSTItmMaster.resx">
+      <DependentUpon>frmMSTItmMaster.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmMSTAcc.resx">
+      <DependentUpon>frmMSTAcc.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmMSTAccBranch.resx">
+      <DependentUpon>frmMSTAccBranch.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmMSTAccDept.resx">
+      <DependentUpon>frmMSTAccDept.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmMSTSalesRep.resx">
+      <DependentUpon>frmMSTSalesRep.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSearchInfo.resx">
+      <DependentUpon>frmSearchInfo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PopupTreeView\frmPopupTreeView.resx">
+      <DependentUpon>frmPopupTreeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmRptFileSetting.resx">
+      <DependentUpon>frmRptFileSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\frmStatementEmail.resx">
+      <DependentUpon>frmStatementEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Security\frmSECChangePassword.resx">
+      <DependentUpon>frmSECChangePassword.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Security\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFBrand.resx">
+      <DependentUpon>frmREFBrand.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFCat.resx">
+      <DependentUpon>frmREFCat.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFIDFormat.resx">
+      <DependentUpon>frmREFIDFormat.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFInterest.resx">
+      <DependentUpon>frmREFInterest.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFOverHead.resx">
+      <DependentUpon>frmREFOverHead.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFPayMode.resx">
+      <DependentUpon>frmREFPayMode.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFShipVia.resx">
+      <DependentUpon>frmREFShipVia.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFTerm.resx">
+      <DependentUpon>frmREFTerm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFTerritory.resx">
+      <DependentUpon>frmREFTerritory.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFPackingType.resx">
+      <DependentUpon>frmREFPackingType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFScale.resx">
+      <DependentUpon>frmREFScale.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFTaxA.resx">
+      <DependentUpon>frmREFTaxA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFColor.resx">
+      <DependentUpon>frmREFColor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFCurr.resx">
+      <DependentUpon>frmREFCurr.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFDocGrp.resx">
+      <DependentUpon>frmREFDocGrp.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFTaxGrp.resx">
+      <DependentUpon>frmREFTaxGrp.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFUOM.resx">
+      <DependentUpon>frmREFUOM.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Main\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFAccGrp.resx">
+      <DependentUpon>frmREFAccGrp.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFBank.resx">
+      <DependentUpon>frmREFBank.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFEqptType.resx">
+      <DependentUpon>frmREFEqptType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFIndustry.resx">
+      <DependentUpon>frmREFIndustry.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFJobCostType.resx">
+      <DependentUpon>frmREFJobCostType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFJobGrp.resx">
+      <DependentUpon>frmREFJobGrp.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFJobPhase.resx">
+      <DependentUpon>frmREFJobPhase.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFJobTask.resx">
+      <DependentUpon>frmREFJobTask.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\References\frmREFLoc.resx">
+      <DependentUpon>frmREFLoc.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmMSTBudget.resx">
+      <DependentUpon>frmMSTBudget.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Masters\frmMSTBudgetCopy.resx">
+      <DependentUpon>frmMSTBudgetCopy.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Resources\share.png" />
+    <None Include="Resources\ship1.ico" />
+    <None Include="Resources\ship1.png" />
+    <None Include="Resources\ship2.png" />
+    <None Include="Resources\ship3.png" />
+    <Content Include="resUser.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>resUser.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="resUser.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>resUser.resx</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BOLib\BOLib.csproj">
+      <Project>{440519f8-6fb7-44af-9276-0f97209115b4}</Project>
+      <Name>BOLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="boss.ico" />
+    <Content Include="HyperLinkClient.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\access_blocking_32.gif" />
+    <None Include="Resources\ActualSizeHS.png" />
+    <None Include="Resources\Alert.png" />
+    <None Include="Resources\AlignTableCellMiddleLeftJustHS.png" />
+    <None Include="Resources\allow_all_32.gif" />
+    <None Include="Resources\application_list_32.gif" />
+    <None Include="Resources\ArrangeSideBySideHS.png" />
+    <None Include="Resources\AttachmentHS.png" />
+    <None Include="Resources\AudioHS.png" />
+    <None Include="Resources\BarCodeHS.png" />
+    <None Include="Resources\book_addressHS.png" />
+    <None Include="Resources\Book_angleHS.gif" />
+    <None Include="Resources\Book_angleHS.png" />
+    <None Include="Resources\Book_openHS.gif" />
+    <None Include="Resources\Book_openHS.png" />
+    <None Include="Resources\book_reportHS.png" />
+    <None Include="Resources\Book_StackOfReportsHS.png" />
+    <None Include="Resources\book_info_32.gif" />
+    <None Include="Resources\book_zoom_32.gif" />
+    <None Include="Resources\binoculares_32.gif" />
+    <None Include="Resources\binoculars_32.png" />
+    <Content Include="Account.ico" />
+    <None Include="Resources\add by range.gif" />
+    <None Include="Resources\79991125v14_480x480_Front.jpg" />
+    <None Include="Resources\approve.png" />
+    <None Include="Resources\bank revaluation.gif" />
+    <None Include="Resources\ar ap revaluation.gif" />
+    <None Include="Resources\bank reconciliation.gif" />
+    <None Include="Resources\add by item.gif" />
+    <None Include="Resources\add detail.gif" />
+    <None Include="Resources\auto save.gif" />
+    <None Include="Resources\assign.png" />
+    <None Include="Resources\assign all.png" />
+    <None Include="Resources\audit log.gif" />
+    <None Include="Resources\attachment.gif" />
+    <None Include="Resources\batch selection.png" />
+    <None Include="Resources\add.png" />
+    <None Include="Resources\Auto Generate3.png" />
+    <None Include="Resources\Append_16.png" />
+    <None Include="Resources\addbyrange.gif" />
+    <None Include="Resources\adddetail.gif" />
+    <None Include="Resources\araprevaluation.gif" />
+    <None Include="Resources\AutoGenerate3.png" />
+    <None Include="Resources\bankreconciliation.gif" />
+    <None Include="Resources\bankrevaluation.gif" />
+    <None Include="Resources\addbyitem.gif" />
+    <Content Include="Resources\BOSS-rpx.gif" />
+    <None Include="Resources\add_down.gif" />
+    <None Include="Resources\account_settings_32.bmp" />
+    <None Include="Resources\1298898702_search.ico" />
+    <None Include="Resources\1298898990_page_white_add.ico" />
+    <Content Include="Resources\administrator_config_32.png" />
+    <Content Include="Resources\administrator_fav_32.png" />
+    <Content Include="Resources\administrator_refresh_32.png" />
+    <None Include="Resources\blacklist_32.png" />
+    <None Include="Resources\black_folder_32.png" />
+    <None Include="Resources\border_outside_32.bmp" />
+    <None Include="Resources\brochure_design_32.png" />
+    <None Include="Resources\attachment.png" />
+    <None Include="Resources\branch.gif" />
+    <None Include="Resources\boss.ico" />
+    <Content Include="Resources\Browse.png" />
+    <None Include="Resources\Circle.png" />
+    <None Include="Resources\clear123.gif" />
+    <None Include="Resources\calendar3.png" />
+    <None Include="Resources\chart of account.gif" />
+    <None Include="Resources\clear.gif" />
+    <None Include="Resources\budget.gif" />
+    <None Include="Resources\chart of account open bal.gif" />
+    <None Include="Resources\change password.gif" />
+    <None Include="Resources\Cancel_16.png" />
+    <None Include="Resources\chartofaccount openbal.gif" />
+    <None Include="Resources\changepassword.gif" />
+    <Content Include="Resources\clients_down_32.png" />
+    <None Include="Resources\doc_save_32.png" />
+    <None Include="Resources\Delete1.png" />
+    <None Include="Resources\FinRepHeader_32.bmp" />
+    <None Include="Resources\gamma_correction_b_32.ico" />
+    <None Include="Resources\gamma_correction_b_32.png" />
+    <None Include="Resources\info_of_media_32.gif" />
+    <None Include="Resources\library_32.png" />
+    <None Include="Resources\footer_write_32.png" />
+    <None Include="Resources\header_write_32.png" />
+    <None Include="Resources\insert_colum_32.png" />
+    <None Include="Resources\insert_field_write_32.png" />
+    <None Include="Resources\insert_row_write_32.png" />
+    <None Include="Resources\insert_table_write_32.png" />
+    <None Include="Resources\down_32.gif" />
+    <None Include="Resources\down_32.png" />
+    <None Include="Resources\font_32.bmp" />
+    <None Include="Resources\delete_cookies_32.png" />
+    <None Include="Resources\close.gif" />
+    <None Include="Resources\new.gif" />
+    <None Include="Resources\deleteaaa.gif" />
+    <None Include="Resources\copy123.gif" />
+    <None Include="Resources\mark3.png" />
+    <None Include="Resources\list.gif" />
+    <None Include="Resources\create po.gif" />
+    <None Include="Resources\invoice.gif" />
+    <None Include="Resources\jobs.gif" />
+    <None Include="Resources\import bom.png" />
+    <None Include="Resources\heart1.jpg" />
+    <None Include="Resources\draft.gif" />
+    <None Include="Resources\item summary.png" />
+    <None Include="Resources\item enquiry.png" />
+    <None Include="Resources\consignment received.gif" />
+    <None Include="Resources\consignment order.gif" />
+    <None Include="Resources\consignment settlement.gif" />
+    <None Include="Resources\cos batch posting.gif" />
+    <None Include="Resources\deposit.gif" />
+    <None Include="Resources\journal.gif" />
+    <None Include="Resources\finance charge.gif" />
+    <None Include="Resources\contra.gif" />
+    <None Include="Resources\create po.png" />
+    <None Include="Resources\list2.gif" />
+    <None Include="Resources\inventory transfer.gif" />
+    <None Include="Resources\inventory production.gif" />
+    <None Include="Resources\inventory adjustment.gif" />
+    <None Include="Resources\create adjustment.png" />
+    <None Include="Resources\new stock count sheet.png" />
+    <None Include="Resources\export.gif" />
+    <None Include="Resources\create so.gif" />
+    <None Include="Resources\create do.gif" />
+    <None Include="Resources\create invoice.gif" />
+    <None Include="Resources\delivery order.gif" />
+    <None Include="Resources\inventory item open bal.gif" />
+    <None Include="Resources\item stock count.gif" />
+    <None Include="Resources\delete.gif" />
+    <None Include="Resources\department.gif" />
+    <None Include="Resources\new group.gif" />
+    <None Include="Resources\new sub group.gif" />
+    <None Include="Resources\delivery to invoice.gif" />
+    <None Include="Resources\customer.gif" />
+    <None Include="Resources\inventory item.gif" />
+    <None Include="Resources\customer open bal.gif" />
+    <None Include="Resources\generate period.gif" />
+    <None Include="Resources\Document Code Setup.gif" />
+    <None Include="Resources\Company Setup.gif" />
+    <None Include="Resources\edit.gif" />
+    <None Include="Resources\get material list.png" />
+    <None Include="Resources\Close_16.png" />
+    <None Include="Resources\ExportExcel_16.png" />
+    <None Include="Resources\markup_32.gif" />
+    <None Include="Resources\Delete_16.png" />
+    <None Include="Resources\GenerateAll_16.png" />
+    <None Include="Resources\Next_16.png" />
+    <None Include="Resources\first_32.png" />
+    <None Include="Resources\last_32.png" />
+    <None Include="Resources\fast_forward_32.png" />
+    <None Include="Resources\CompanySetup.gif" />
+    <None Include="Resources\createadjustment.png" />
+    <None Include="Resources\consignmentreceived.gif" />
+    <None Include="Resources\consignmentsettlement.gif" />
+    <None Include="Resources\inventorytransfer.gif" />
+    <None Include="Resources\inventoryproduction.gif" />
+    <None Include="Resources\createdo.gif" />
+    <None Include="Resources\createinvoice.gif" />
+    <None Include="Resources\createpo.gif" />
+    <None Include="Resources\deliveryorder.gif" />
+    <None Include="Resources\generateperiod.gif" />
+    <None Include="Resources\customeropenbal.gif" />
+    <None Include="Resources\cosbatchposting.gif" />
+    <None Include="Resources\deliverytoinvoice.gif" />
+    <None Include="Resources\itemenquiry.png" />
+    <None Include="Resources\importbom.png" />
+    <None Include="Resources\consignmentorder.gif" />
+    <None Include="Resources\financecharge.gif" />
+    <None Include="Resources\createso.gif" />
+    <None Include="Resources\nav_topbar.gif" />
+    <None Include="Resources\estore.png" />
+    <None Include="Resources\DataImport.png" />
+    <None Include="Resources\Import.png" />
+    <Content Include="Resources\Notes.ICO" />
+    <None Include="Resources\TECHACE Innovation Logo.jpg" />
+    <None Include="Resources\rew_32.png" />
+    <None Include="Resources\SelectionByDoc_16.png" />
+    <None Include="Resources\Pervious_16.png" />
+    <None Include="Resources\OverWrite_32.gif" />
+    <None Include="Resources\ok_32.gif" />
+    <None Include="Resources\Update_16.gif" />
+    <None Include="Resources\ok_16.png" />
+    <None Include="Resources\SelectNoneNew UOMs_16.png" />
+    <None Include="Resources\SelectAllNewUOMs_16.png" />
+    <None Include="Resources\RetrieveData_16.png" />
+    <None Include="Resources\Transfer_16.png" />
+    <None Include="Resources\print all.png" />
+    <None Include="Resources\update.png" />
+    <None Include="Resources\search123.gif" />
+    <None Include="Resources\search.gif" />
+    <None Include="Resources\select.gif" />
+    <None Include="Resources\System Option.gif" />
+    <None Include="Resources\system general list.gif" />
+    <None Include="Resources\System Period.gif" />
+    <None Include="Resources\to do.gif" />
+    <None Include="Resources\system alert log.gif" />
+    <None Include="Resources\system alert.gif" />
+    <None Include="Resources\record access.gif" />
+    <None Include="Resources\security user.gif" />
+    <None Include="Resources\security group.gif" />
+    <None Include="Resources\settings.gif" />
+    <None Include="Resources\payment received.gif" />
+    <None Include="Resources\show formula.png" />
+    <None Include="Resources\packing list.gif" />
+    <None Include="Resources\transaction group.gif" />
+    <None Include="Resources\open department.gif" />
+    <None Include="Resources\open company.gif" />
+    <None Include="Resources\sales order.gif" />
+    <None Include="Resources\ship name.gif" />
+    <None Include="Resources\sales representative.gif" />
+    <None Include="Resources\price list.gif" />
+    <None Include="Resources\quotation.gif" />
+    <None Include="Resources\print16.png" />
+    <None Include="Resources\save16.png" />
+    <None Include="Resources\stop counting.png" />
+    <None Include="Resources\start counting.png" />
+    <None Include="Resources\refresh32.gif" />
+    <None Include="Resources\purchase request.gif" />
+    <None Include="Resources\purchase requisition.gif" />
+    <None Include="Resources\payment issue.gif" />
+    <None Include="Resources\refresh.png" />
+    <None Include="Resources\purchase order.gif" />
+    <None Include="Resources\purchase plan.gif" />
+    <None Include="Resources\reject.png" />
+    <None Include="Resources\submit.png" />
+    <None Include="Resources\sales order adjustment.gif" />
+    <None Include="Resources\purchase delivery.gif" />
+    <None Include="Resources\purchase adjustment.gif" />
+    <None Include="Resources\update price.png" />
+    <None Include="Resources\send.png" />
+    <None Include="Resources\select none.png" />
+    <None Include="Resources\select all.png" />
+    <None Include="Resources\paid.png" />
+    <None Include="Resources\print.gif" />
+    <None Include="Resources\open3.png" />
+    <None Include="Resources\post.gif" />
+    <None Include="Resources\Reference.gif" />
+    <None Include="Resources\Unit of Measure.gif" />
+    <None Include="Resources\save.gif" />
+    <None Include="Resources\ok_32.bmp" />
+    <None Include="Resources\up_32.bmp" />
+    <None Include="Resources\scissors_32.png" />
+    <None Include="Resources\scissors_128.gif" />
+    <None Include="Resources\report_save_32.png" />
+    <None Include="Resources\show _wireframe_128.gif" />
+    <None Include="Resources\select_plane_delete_128.gif" />
+    <None Include="Resources\select_plane_close_128.gif" />
+    <None Include="Resources\select_plane_next_128.gif" />
+    <None Include="Resources\select_plane_ok_128.gif" />
+    <None Include="Resources\white_list_save_32.png" />
+    <None Include="Resources\white_list_save_321.png" />
+    <None Include="Resources\traffic_control_save_321.png" />
+    <None Include="Resources\test_next_321.png" />
+    <None Include="Resources\terminal_process_save_321.png" />
+    <None Include="Resources\report_save_321.png" />
+    <None Include="Resources\Triangle.png" />
+    <None Include="Resources\copy_add_32.png" />
+    <None Include="Resources\insert_column_32.png" />
+    <None Include="Resources\preview_24.gif" />
+    <None Include="Resources\preview_16.gif" />
+    <None Include="Resources\preview_32.gif" />
+    <None Include="Resources\copy_ok_32.gif" />
+    <None Include="Resources\copy_write_24.gif" />
+    <None Include="Resources\doc_write_32.gif" />
+    <None Include="Resources\doc_ok_32.gif" />
+    <None Include="Resources\door_ok_32.gif" />
+    <None Include="Resources\doc_info_32.gif" />
+    <None Include="Resources\Lkeys.png" />
+    <None Include="Resources\door_back_32.png" />
+    <None Include="Resources\user_next_32.png" />
+    <None Include="Resources\reload_32.gif" />
+    <None Include="Resources\cancel_32.png" />
+    <None Include="Resources\doc_close_32.png" />
+    <None Include="Resources\doc_32.png" />
+    <None Include="Resources\doc_48.png" />
+    <None Include="Resources\Question.png" />
+    <None Include="Resources\Error1.png" />
+    <None Include="Resources\ZoomHS.png" />
+    <None Include="Resources\write_32.gif" />
+    <None Include="Resources\Web.png" />
+    <None Include="Resources\WarningHS.png" />
+    <None Include="Resources\Warning.png" />
+    <None Include="Resources\Warning1.png" />
+    <None Include="Resources\Users.png" />
+    <None Include="Resources\user_next_321.png" />
+    <None Include="Resources\trash_32.gif" />
+    <None Include="Resources\TableHS.png" />
+    <None Include="Resources\Success.png" />
+    <None Include="Resources\Stop.png" />
+    <None Include="Resources\Serious.png" />
+    <None Include="Resources\Search.png" />
+    <None Include="Resources\saveHS.png" />
+    <None Include="Resources\SaveAllHS.png" />
+    <None Include="Resources\running_process_32.gif" />
+    <None Include="Resources\Run.png" />
+    <None Include="Resources\RighsRestrictedHS.png" />
+    <None Include="Resources\rewind_32.gif" />
+    <None Include="Resources\PushpinHS.png" />
+    <None Include="Resources\ProtectSubdocumentHS.png" />
+    <None Include="Resources\ProtectFormHS.png" />
+    <None Include="Resources\Process.png" />
+    <None Include="Resources\PrintPreviewHS.png" />
+    <None Include="Resources\PrintHS.png" />
+    <None Include="Resources\printer_conf_32_hot.gif" />
+    <None Include="Resources\Printer.png" />
+    <None Include="Resources\preview_32_hot.gif" />
+    <None Include="Resources\PointerHS.png" />
+    <None Include="Resources\PlayHS.png" />
+    <None Include="Resources\PieChartHS.png" />
+    <None Include="Resources\Pause.png" />
+    <None Include="Resources\paint_conf_32_hot.gif" />
+    <None Include="Resources\OrganizerHS.png" />
+    <None Include="Resources\openfolderHS.png" />
+    <None Include="Resources\OK.png" />
+    <None Include="Resources\NoteHS.png" />
+    <None Include="Resources\None.png" />
+    <None Include="Resources\NavForward.png" />
+    <None Include="Resources\NavBack.png" />
+    <None Include="Resources\live_update_write_32.gif" />
+    <None Include="Resources\kill_process_32.gif" />
+    <None Include="Resources\kill_process_24.gif" />
+    <None Include="Resources\Keys.png" />
+    <None Include="Resources\Install.png" />
+    <None Include="Resources\input_validation_save_32.gif" />
+    <None Include="Resources\Information.png" />
+    <None Include="Resources\Info.png" />
+    <None Include="Resources\HelpFile.png" />
+    <None Include="Resources\Help.png" />
+    <None Include="Resources\Help2.png" />
+    <None Include="Resources\Help1.png" />
+    <None Include="Resources\graphhs.png" />
+    <None Include="Resources\GotoShortcutsHS.png" />
+    <None Include="Resources\Generate.png" />
+    <None Include="Resources\FormRunHS.png" />
+    <None Include="Resources\first_aid_kit_32.gif" />
+    <None Include="Resources\FindHS.png" />
+    <None Include="Resources\Filter2HS.png" />
+    <None Include="Resources\FaxHS.png" />
+    <None Include="Resources\fastforw_32.gif" />
+    <None Include="Resources\export_db_32.gif" />
+    <None Include="Resources\ExpirationHS.png" />
+    <None Include="Resources\ErrorInfo.png" />
+    <None Include="Resources\eps_openHS.png" />
+    <None Include="Resources\eps_open_largelHS.png" />
+    <None Include="Resources\eps_closedHS.png" />
+    <None Include="Resources\EnvelopeHS.png" />
+    <None Include="Resources\emergency_32.gif" />
+    <None Include="Resources\edit_conf_32_hot.gif" />
+    <None Include="Resources\edit_conf_32_hot1.gif" />
+    <None Include="Resources\DocumentHS.png" />
+    <None Include="Resources\Document.png" />
+    <None Include="Resources\doc_write_32_hot.gif" />
+    <None Include="Resources\doc_write_24_dis.gif" />
+    <None Include="Resources\doc_write_24.gif" />
+    <None Include="Resources\doc_write_16_dis.gif" />
+    <None Include="Resources\doc_write_16.gif" />
+    <None Include="Resources\doc_ok_24_dis.gif" />
+    <None Include="Resources\doc_ok_24.gif" />
+    <None Include="Resources\doc_ok_16_dis.gif" />
+    <None Include="Resources\doc_ok_16.gif" />
+    <None Include="Resources\doc_info_24_dis.gif" />
+    <None Include="Resources\doc_info_24.gif" />
+    <None Include="Resources\doc_info_16_dis.gif" />
+    <None Include="Resources\doc_info_16.gif" />
+    <None Include="Resources\doc_conf_24_dis.gif" />
+    <None Include="Resources\doc_conf_24.gif" />
+    <None Include="Resources\doc_close_24_dis.gif" />
+    <None Include="Resources\doc_close_24.gif" />
+    <None Include="Resources\doc_close_16_dis.gif" />
+    <None Include="Resources\doc_close_16.gif" />
+    <None Include="Resources\doc_add_24_dis.gif" />
+    <None Include="Resources\doc_add_24.gif" />
+    <None Include="Resources\doc_add_16_dis.gif" />
+    <None Include="Resources\doc_add_16.gif" />
+    <None Include="Resources\doc_24_dis.gif" />
+    <None Include="Resources\doc_24.gif" />
+    <None Include="Resources\diskette_zoom_32.bmp" />
+    <None Include="Resources\diskette_write_32.bmp" />
+    <None Include="Resources\diskette_up_32.bmp" />
+    <None Include="Resources\diskette_unlock_32.bmp" />
+    <None Include="Resources\diskette_search_32.bmp" />
+    <None Include="Resources\diskette_remove_32.bmp" />
+    <None Include="Resources\diskette_refresh_32.bmp" />
+    <None Include="Resources\diskette_ok_32.bmp" />
+    <None Include="Resources\diskette_next_32.bmp" />
+    <None Include="Resources\diskette_lock_32.bmp" />
+    <None Include="Resources\diskette_level_32.bmp" />
+    <None Include="Resources\diskette_info_32.bmp" />
+    <None Include="Resources\diskette_help_32.bmp" />
+    <None Include="Resources\diskette_fav_32.bmp" />
+    <None Include="Resources\diskette_down_32.bmp" />
+    <None Include="Resources\diskette_config_32.bmp" />
+    <None Include="Resources\diskette_close_32.bmp" />
+    <None Include="Resources\diskette_clock_32.bmp" />
+    <None Include="Resources\diskette_cancel_32.bmp" />
+    <None Include="Resources\diskette_back_32.bmp" />
+    <None Include="Resources\diskette_add_32.bmp" />
+    <None Include="Resources\diskette_48.gif" />
+    <None Include="Resources\diskette_32.gif" />
+    <None Include="Resources\diskette_32.bmp" />
+    <None Include="Resources\DialHS.png" />
+    <None Include="Resources\DeleteHS.png" />
+    <None Include="Resources\Delete.png" />
+    <None Include="Resources\data_stream_32.gif" />
+    <None Include="Resources\CutHS.png" />
+    <None Include="Resources\Cretical.png" />
+    <None Include="Resources\CopyHS.png" />
+    <None Include="Resources\copy_save_32_hot.gif" />
+    <None Include="Resources\copy.png" />
+    <None Include="Resources\ColorHS.png" />
+    <None Include="Resources\close_a_48.gif" />
+    <None Include="Resources\close_a_32.gif" />
+    <None Include="Resources\close_128.gif" />
+    <None Include="Resources\close_32.bmp" />
+    <None Include="Resources\Clock1.png" />
+    <None Include="Resources\cashbox_32.gif" />
+    <None Include="Resources\Cancel.png" />
+    <None Include="Resources\Calendar_scheduleHS.png" />
+    <None Include="Resources\CalculatorHS.png" />
+    <None Include="Resources\PrimaryKeyHS.png" />
+    <None Include="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\User.png" />
+    <None Include="Resources\HomeHS.png" />
+    <None Include="Resources\Clock.png" />
+    <None Include="Resources\Calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.VSTORuntime.3.0">
+      <Visible>False</Visible>
+      <ProductName>Visual Studio Tools for the Office system 3.0 Runtime</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="ActiveReports.Web">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="BusinessObjects.Licensing.KeycodeDecoder">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.Enterprise.PluginManager">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.Enterprise.Viewing.ReportSource">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.CommLayer">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.CommonControls">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.CommonObjectModel">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.CubeDefModel">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.DataSetConversion">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.ObjectFactory">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.Prompting">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="CrystalDecisions.ReportAppServer.XmlSerialize">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Documents.Excel.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Documents.Reports.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Documents.v8.3">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Excel.v8.3">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Shared.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Shared.v8.3">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.AppStylistSupport.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.Misc.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.Misc.v8.3">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.SupportDialogs.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinCalcManager.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinCalcManager.v11.1.FormulaBuilder">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinCalcManager.v8.3">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinCalcManager.v8.3.FormulaBuilder">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinDataSource.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinDataSource.v8.3">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinDock.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinDock.v8.3">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinEditors.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinEditors.v8.3">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinExplorerBar.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinGanttView.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinGrid.DocumentExport.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinGrid.DocumentExport.v8.3">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinGrid.ExcelExport.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinGrid.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinGrid.v8.3">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinInkProvider.Ink17.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinListBar.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinListView.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinListView.v8.3">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinMaskedEdit.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinMaskedEdit.v8.3">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinPrintPreviewDialog.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinPrintPreviewDialog.v8.3">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinSchedule.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinSchedule.v8.3">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinSpellChecker.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinSpellChecker.v8.3">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinStatusBar.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinStatusBar.v8.3">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinTabbedMdi.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinTabbedMdi.v8.3">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinTabControl.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinTabControl.v8.3">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinToolbars.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinToolbars.v8.3">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinTree.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.UltraWinTree.v8.3">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.v11.1.Design">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics2.Win.v8.3">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics3.Documents.Core.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics3.Documents.Excel.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics3.Excel.v8.3">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics3.Win.UltraWinGrid.ExcelExport.v11.1">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Infragistics3.Win.UltraWinGrid.ExcelExport.v8.3">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.Ink">
+      <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.Office.Interop.Excel">
+      <Visible>False</Visible>
+      <PublishState>Prerequisite</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3924545A-F8E2-475A-B1A4-05175BC41E50}" />
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Forms\PopupCustomizeGridView\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="..\packages\Microsoft.Web.WebView2.1.0.1905-prerelease\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.1905-prerelease\build\Microsoft.Web.WebView2.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Web.WebView2.1.0.1905-prerelease\build\Microsoft.Web.WebView2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Web.WebView2.1.0.1905-prerelease\build\Microsoft.Web.WebView2.targets'))" />
+  </Target>
+</Project>
