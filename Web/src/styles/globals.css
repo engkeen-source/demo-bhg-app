@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --beige-1: #E7D6C5;
+  --beige-2: #F3EAE2;
+  --boss-dark: #404040;
+  --boss-brown: #6C4C2C;
+  --boss-white: #FFFFFF;
+}
+
+/* Calibri-like font stack site-wide */
+body {
+  font-family: 'Calibri', 'Trebuchet MS', 'Liberation Sans', Arial, sans-serif;
+  font-size: 11pt;
+  color: var(--boss-dark);
+  background: #f0f0f0;
+}
+
+/* Input field resets to match WinForms TextBox look */
+.boss-input {
+  @apply w-full h-[26px] text-[11pt] font-calibri border border-gray-400
+    bg-white px-2 focus:outline-none focus:ring-1 focus:ring-blue-400
+    placeholder-gray-400;
+}
+
+.boss-input:disabled {
+  @apply bg-gray-100 text-gray-500 cursor-not-allowed;
+}
+
+/* Toolbar button style (matches tspBar ToolStripButton) */
+.boss-toolbar-btn {
+  @apply flex flex-col items-center justify-center gap-[2px]
+    w-[70px] h-[55px] text-[11pt] italic font-calibri text-boss-dark
+    bg-transparent border-none cursor-pointer select-none
+    hover:bg-black/5 active:bg-black/10 transition-colors rounded-sm;
+}
+
+/* Panel header gradient (Log In title bar) */
+.boss-panel-header {
+  background: linear-gradient(180deg, var(--beige-1) 0%, var(--beige-2) 100%);
+  @apply text-[11pt] font-bold italic text-boss-dark;
+}
+
+/* Desktop-style scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
