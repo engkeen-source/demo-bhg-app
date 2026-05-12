@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-inter), -apple-system, system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #18181B;
+    background: #FAFAFA;
+  }
+
+  input, select, textarea, button {
+    font-family: inherit;
+  }
+}
+
+@layer utilities {
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Focus ring — consistent across all interactive elements */
+.focus-ring {
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-1;
+}
+
+/* Input base style */
+.w2-input {
+  @apply h-9 w-full rounded-lg border border-border-strong bg-bg-surface px-3 text-sm text-txt-primary
+    placeholder:text-txt-tertiary
+    focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500
+    disabled:bg-bg-muted disabled:text-txt-tertiary disabled:cursor-not-allowed
+    transition-shadow duration-150;
+}
+
+/* Thin scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #D4D4D8; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #A1A1AA; }
