@@ -60,11 +60,8 @@ def validate_lines(lines: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 _err(errors, n, "item_code",
                      f"Line {n}: an item must be selected.")
 
-        # Stock / Assembly / Non_Stock / Service – require qty and uom
+        # Stock / Assembly / Non_Stock / Service – uom required; qty optional (amount entered directly)
         if lt in GRP_STOCK:
-            if qty == 0:
-                _err(errors, n, "qty",
-                     f"Line {n}: {lt} line requires a quantity.")
             if not row.get("uom"):
                 _err(errors, n, "uom",
                      f"Line {n}: {lt} line requires a UOM.")
