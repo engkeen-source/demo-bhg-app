@@ -19,7 +19,7 @@ async def search_customers(
         select(Customer)
         .where(Customer.inactive.is_(False))
         .order_by(Customer.code)
-        .limit(20)
+        .limit(500)
     )
     if q.strip():
         pattern = f"%{q.strip()}%"

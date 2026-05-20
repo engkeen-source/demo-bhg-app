@@ -76,11 +76,11 @@ export default function QuotationPage() {
   const [saveErrors, setSaveErrors] = useState<SaveError[]>([])
   const [saveSuccess, setSaveSuccess] = useState(false)
 
-  // Customer autocomplete
+  // Customer autocomplete — full list fetched once, filtered client-side (instant)
   const [custQuery, setCustQuery] = useState('')
-  const [custSuggestions, setCustSuggestions] = useState<CustomerSummary[]>([])
+  const [allCustomers, setAllCustomers] = useState<CustomerSummary[]>([])
   const [showCustDropdown, setShowCustDropdown] = useState(false)
-  const custSearchTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const custLoadedRef = useRef(false)
 
   // Live computed totals (from calc.ts)
   const [computed, setComputed] = useState(() => computeLines([], 1, 0, 9))
@@ -95,15 +95,8 @@ export default function QuotationPage() {
 
   function handleCustInput(val: string) {
     setCustQuery(val)
-    // Clear previously-selected customer when user types again
     setHeader(h => ({ ...h, customer_id: undefined, customer_code: undefined, customer_name: undefined }))
     setShowCustDropdown(true)
-    if (custSearchTimer.current) clearTimeout(custSearchTimer.current)
-    // Empty query still loads all customers (server already returns up to 20 when q='')
-    custSearchTimer.current = setTimeout(async () => {
-      const results = await searchCustomers(val).catch(() => [])
-      setCustSuggestions(results)
-    }, val.trim() ? 300 : 100)
   }
 
   async function handleCustSelect(cust: CustomerSummary) {
@@ -339,9 +332,9 @@ export default function QuotationPage() {
                         onChange={e => handleCustInput(e.target.value)}
                         onFocus={() => {
                           setShowCustDropdown(true)
-                          // Load all customers immediately on focus (empty query)
-                          if (custSuggestions.length === 0) {
-                            searchCustomers('').then(setCustSuggestions).catch(() => {})
+                          if (!custLoadedRef.current) {
+                            custLoadedRef.current = true
+                            searchCustomers('').then(setAllCustomers).catch(() => {})
                           }
                         }}
                         onBlur={() => setTimeout(() => setShowCustDropdown(false), 200)}
@@ -351,20 +344,29 @@ export default function QuotationPage() {
                         <SearchIcon />
                       </div>
                     </div>
-                    {showCustDropdown && custSuggestions.length > 0 && (
-                      <ul className="absolute z-30 top-full left-0 right-0 bg-white border border-[#D8CFC4] rounded shadow-lg max-h-48 overflow-y-auto">
-                        {custSuggestions.map(c => (
-                          <li
-                            key={c.id}
-                            className="px-3 py-1.5 font-calibri text-[#404040] hover:bg-[#F3EAE2] cursor-pointer"
-                            onMouseDown={() => handleCustSelect(c)}
-                          >
-                            <div className="text-[9pt] font-semibold text-[#6C4C2C]">{c.code} {c.name}</div>
-                            <div className="text-[8pt] text-[#888]">{c.name}</div>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
+                    {showCustDropdown && !header.customer_id && (() => {
+                      const q = custQuery.trim().toLowerCase()
+                      const filtered = q
+                        ? allCustomers.filter(c => c.code.toLowerCase().includes(q) || c.name.toLowerCase().includes(q))
+                        : allCustomers
+                      return (
+                        <ul className="absolute z-30 top-full left-0 right-0 bg-white border border-[#D8CFC4] rounded shadow-lg max-h-48 overflow-y-auto">
+                          {filtered.length === 0
+                            ? <li className="px-3 py-2 font-calibri text-[9pt] text-[#888] italic">No matching customers</li>
+                            : filtered.map(c => (
+                                <li
+                                  key={c.id}
+                                  className="px-3 py-1.5 font-calibri text-[#404040] hover:bg-[#F3EAE2] cursor-pointer"
+                                  onMouseDown={() => handleCustSelect(c)}
+                                >
+                                  <div className="text-[9pt] font-semibold text-[#6C4C2C]">{c.code}</div>
+                                  <div className="text-[8pt] text-[#888]">{c.name}</div>
+                                </li>
+                              ))
+                          }
+                        </ul>
+                      )
+                    })()}
                   </div>
                 </div>
 

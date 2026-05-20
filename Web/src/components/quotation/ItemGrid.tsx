@@ -399,7 +399,13 @@ export default function ItemGrid({ lines, subTotal, currency, defaultLocation, o
                 placeholder="Enter or dbl-click"
               />
             )
-          ) : <span className={`${roText} cursor-pointer`} onDoubleClick={() => startEdit(line.line_no)}>{line.item_code ?? ''}</span>}
+          ) : <span
+              className={`${roText} block w-full min-h-[1.1em] cursor-pointer`}
+              onDoubleClick={() => {
+                startEdit(line.line_no)
+                setModal({ open: true, mode: 'item', lineNo: line.line_no, field: 'item_id', query: line.item_code ?? '' })
+              }}
+            >{line.item_code ?? ''}</span>}
         </td>
 
         {/* Description */}
