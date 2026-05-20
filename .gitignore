@@ -5438,3 +5438,11 @@ WinUI/Reports/zAR_SO_Bal.cs
 WinUI/Reports/zAR_SO_Bal.rpt
 WinUI/Reports/zState_ContMF1.rpt
 WinUI/App.config
+backend/.env
+backend/.venv
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd

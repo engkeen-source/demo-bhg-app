@@ -1,28 +1,46 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import PageHeader from '@/components/common/PageHeader'
 import Card from '@/components/common/Card'
 import DocToolbar from '@/components/common/DocToolbar'
 import FormField from '@/components/common/FormField'
-import DataGrid, { Column } from '@/components/common/DataGrid'
 import TabBar from '@/components/common/TabBar'
+import ItemGrid from '@/components/quotation/ItemGrid'
+import { computeLines } from '@/components/quotation/calc'
+import {
+  searchCustomers, getCustomer, createQuotation, updateQuotation,
+  type CustomerSummary, type QuotationHeader, type QuotationLine, type SaveError,
+} from '@/lib/api'
 
-const LINE_COLS: Column[] = [
-  { key: 'no',        header: '#',          width: '36px', align: 'center' },
-  { key: 'itemCode',  header: 'Item Code',  width: '110px' },
-  { key: 'desc',      header: 'Description' },
-  { key: 'qty',       header: 'Qty',        width: '70px', align: 'right' },
-  { key: 'uom',       header: 'UOM',        width: '55px' },
-  { key: 'unitPrice', header: 'Unit Price', width: '100px', align: 'right' },
-  { key: 'disc',      header: 'Disc %',     width: '65px', align: 'right' },
-  { key: 'amount',    header: 'Amount',     width: '110px', align: 'right' },
-]
+// ── helpers ───────────────────────────────────────────────────────────────────
 
-const MOCK_LINES = [
-  { id: '1', no: '1', itemCode: 'ITM-002', desc: 'Office Chair — Ergonomic Series B', qty: '10', uom: 'PCS', unitPrice: '480.00', disc: '10.00', amount: '4,320.00' },
-  { id: '2', no: '2', itemCode: 'ITM-005', desc: 'Standing Desk 140cm x 70cm', qty: '5', uom: 'PCS', unitPrice: '1,200.00', disc: '5.00', amount: '5,700.00' },
-]
+function today(): string {
+  return new Date().toISOString().slice(0, 10)
+}
+
+function addDays(d: string, n: number): string {
+  const dt = new Date(d)
+  dt.setDate(dt.getDate() + n)
+  return dt.toISOString().slice(0, 10)
+}
+
+function fmt(n?: number) {
+  return (n ?? 0).toFixed(2)
+}
+
+function blankHeader(): QuotationHeader {
+  const d = today()
+  return {
+    doc_date: d, doc_state: 'New', doc_type: 'Quotation',
+    currency: 'SGD', currency_rate: 1, quotation_status: 'Pending',
+    potential_project: false, printed: false,
+    discount_rate: 0, tax_rate: 9, tax_code: 'GST',
+    valid_date: addDays(d, 7),
+  }
+}
+
+// ── Tabs ──────────────────────────────────────────────────────────────────────
 
 const TABS = [
   { id: 'main',    label: 'Main' },
@@ -38,7 +56,6 @@ const rowClass = 'grid items-start gap-x-3 gap-y-2'
 const labelClass = 'text-[9pt] font-calibri font-semibold text-[#404040] leading-9 whitespace-nowrap'
 const roClass = 'h-9 w-full rounded border border-[#D8CFC4] bg-[#F3EAE2] px-2.5 text-[10pt] font-calibri text-[#888] flex items-center'
 
-// Search icon SVG (inline, no dependency)
 function SearchIcon() {
   return (
     <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -48,8 +65,113 @@ function SearchIcon() {
   )
 }
 
+// ── Main component ────────────────────────────────────────────────────────────
+
 export default function QuotationPage() {
   const [tab, setTab] = useState('main')
+  const [header, setHeader] = useState<QuotationHeader>(blankHeader())
+  const [lines, setLines] = useState<QuotationLine[]>([])
+  const [saving, setSaving] = useState(false)
+  const [saveErrors, setSaveErrors] = useState<SaveError[]>([])
+  const [saveSuccess, setSaveSuccess] = useState(false)
+
+  // Customer autocomplete
+  const [custQuery, setCustQuery] = useState('')
+  const [custSuggestions, setCustSuggestions] = useState<CustomerSummary[]>([])
+  const [showCustDropdown, setShowCustDropdown] = useState(false)
+  const custSearchTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  // Live computed totals (from calc.ts)
+  const [computed, setComputed] = useState(() => computeLines([], 1, 0, 9))
+
+  // Recompute whenever lines or header rates change
+  useEffect(() => {
+    const result = computeLines(lines, header.currency_rate ?? 1, header.discount_rate ?? 0, header.tax_rate ?? 9)
+    setComputed(result)
+  }, [lines, header.currency_rate, header.discount_rate, header.tax_rate])
+
+  // ── Customer autocomplete ─────────────────────────────────────────────────
+
+  function handleCustInput(val: string) {
+    setCustQuery(val)
+    setHeader(h => ({ ...h, customer_name: val, customer_id: undefined, customer_code: undefined }))
+    setShowCustDropdown(true)
+    if (custSearchTimer.current) clearTimeout(custSearchTimer.current)
+    if (!val.trim()) { setCustSuggestions([]); return }
+    custSearchTimer.current = setTimeout(async () => {
+      const results = await searchCustomers(val).catch(() => [])
+      setCustSuggestions(results)
+    }, 300)
+  }
+
+  async function handleCustSelect(cust: CustomerSummary) {
+    setShowCustDropdown(false)
+    setCustQuery(cust.name)
+    // Fetch full record and auto-populate header
+    const detail = await getCustomer(cust.id).catch(() => null)
+    if (!detail) return
+    setHeader(h => ({
+      ...h,
+      customer_id:     detail.id,
+      customer_code:   detail.code,
+      customer_name:   detail.name,
+      representative:  detail.representative ?? h.representative,
+      head_sales:      detail.head_sales ?? h.head_sales,
+      attention:       detail.attention ?? h.attention,
+      ar_account_code: detail.ar_account_code ?? h.ar_account_code,
+      ar_account_name: detail.ar_account_name ?? h.ar_account_name,
+      price_type:      detail.price_type ?? h.price_type,
+      terms:           detail.terms ?? h.terms,
+      currency:        detail.currency,
+      tax_code:        detail.tax_code,
+      tax_rate:        detail.tax_rate,
+      discount_rate:   detail.discount_rate,
+    }))
+  }
+
+  // ── Save ─────────────────────────────────────────────────────────────────
+
+  const handleSave = useCallback(async () => {
+    setSaving(true)
+    setSaveErrors([])
+    setSaveSuccess(false)
+    try {
+      const payload = { ...header, ...computed }
+      let result
+      if (header.id) {
+        result = await updateQuotation(header.id, payload, lines)
+      } else {
+        result = await createQuotation(payload, lines)
+      }
+      setHeader(h => ({ ...h, id: result.id, doc_id: result.doc_id ?? h.doc_id, doc_state: result.doc_state }))
+      setLines(result.lines ?? lines)
+      setSaveSuccess(true)
+      setTimeout(() => setSaveSuccess(false), 3000)
+    } catch (err: unknown) {
+      const apiErr = err as { status?: number; detail?: { errors?: SaveError[] } }
+      if (apiErr?.detail?.errors) {
+        setSaveErrors(apiErr.detail.errors)
+      } else {
+        setSaveErrors([{ line_no: 0, field: '', message: 'Failed to connect to the backend. Make sure the API server is running.' }])
+      }
+    } finally {
+      setSaving(false)
+    }
+  }, [header, lines, computed])
+
+  function handleNew() {
+    setHeader(blankHeader())
+    setLines([])
+    setSaveErrors([])
+    setSaveSuccess(false)
+    setCustQuery('')
+  }
+
+  // Group errors by line_no for display
+  const headerErrors = saveErrors.filter(e => e.line_no === 0)
+  const lineErrors   = saveErrors.filter(e => e.line_no !== 0)
+
+  // ── Render ────────────────────────────────────────────────────────────────
 
   return (
     <div className="space-y-4">
@@ -57,8 +179,29 @@ export default function QuotationPage() {
 
       <Card noPad>
         <div className="px-4 py-2 border-b border-[#E5DDD3]">
-          <DocToolbar />
+          <DocToolbar
+            onNew={handleNew}
+            onSave={handleSave}
+            disableSave={saving}
+          />
         </div>
+
+        {/* Save feedback banner */}
+        {saveSuccess && (
+          <div className="mx-4 mt-3 px-4 py-2 rounded bg-green-50 border border-green-200 text-[9pt] font-calibri text-green-700">
+            Quotation saved{header.doc_id ? ` — Document ID: ${header.doc_id}` : ''}.
+          </div>
+        )}
+        {(headerErrors.length > 0 || lineErrors.length > 0) && (
+          <div className="mx-4 mt-3 px-4 py-3 rounded bg-red-50 border border-red-200">
+            <p className="text-[9pt] font-semibold font-calibri text-red-700 mb-1">Save Failed</p>
+            <ul className="list-disc list-inside space-y-0.5">
+              {[...headerErrors, ...lineErrors].map((e, i) => (
+                <li key={i} className="text-[9pt] font-calibri text-red-700">{e.message}</li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <div className="px-4 pt-2">
           <TabBar tabs={TABS} active={tab} onChange={setTab} />
@@ -73,133 +216,107 @@ export default function QuotationPage() {
 
               {/* Section 1 — Document */}
               <div className={sectionClass}>
-                {/* Document State */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Document State :</span>
-                  <div className={roClass}>New</div>
+                  <div className={roClass}>{header.doc_state ?? 'New'}</div>
                 </div>
-                {/* Document Date */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Document Date :</span>
-                  <FormField label="" type="date" defaultValue="2026-05-12" />
+                  <FormField label="" type="date" value={header.doc_date ?? ''} onChange={e => setHeader(h => ({ ...h, doc_date: e.target.value }))} />
                 </div>
-                {/* Document ID */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Document ID :</span>
-                  <FormField label="" placeholder="" />
+                  <div className={roClass}>{header.doc_id ?? ''}</div>
                 </div>
-                {/* Document Type */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Document Type : <span className="text-red-500">*</span></span>
-                  <FormField label="" as="select">
+                  <FormField label="" as="select" value={header.doc_type} onChange={e => setHeader(h => ({ ...h, doc_type: e.target.value }))}>
                     <option>Quotation</option>
                     <option>Sales Order</option>
                     <option>Invoice</option>
                   </FormField>
                 </div>
-                {/* Document Group */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Document Group :</span>
-                  <FormField label="" as="select">
+                  <FormField label="" as="select" value={header.doc_group ?? ''} onChange={e => setHeader(h => ({ ...h, doc_group: e.target.value }))}>
                     <option value="">— Select —</option>
-                    <option>Group A</option>
-                    <option>Group B</option>
+                    <option>Singapore</option>
+                    <option>Malaysia</option>
+                    <option>International</option>
                   </FormField>
                 </div>
               </div>
 
-              {/* Section 2 — Dates & Order Refs */}
+              {/* Section 2 — Dates & Status */}
               <div className={sectionClass}>
-                {/* Enquiry Date */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Enquiry Date :</span>
-                  <FormField label="" type="date" placeholder="DD-MM-YYYY" />
+                  <FormField label="" type="date" value={header.enquiry_date ?? ''} onChange={e => setHeader(h => ({ ...h, enquiry_date: e.target.value || undefined }))} />
                 </div>
-                {/* Valid Date */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Valid Date :</span>
-                  <FormField label="" type="date" defaultValue="2026-05-19" />
+                  <FormField label="" type="date" value={header.valid_date ?? ''} onChange={e => setHeader(h => ({ ...h, valid_date: e.target.value || undefined }))} />
                 </div>
-                {/* Quotation Status */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Quotation Status :</span>
-                  <FormField label="" as="select">
+                  <FormField label="" as="select" value={header.quotation_status} onChange={e => setHeader(h => ({ ...h, quotation_status: e.target.value }))}>
                     <option>Pending</option>
                     <option>Approved</option>
                     <option>Lost</option>
                     <option>Won</option>
                   </FormField>
                 </div>
-                {/* Reason for Loss */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Reason for Loss :</span>
-                  <FormField label="" placeholder="" />
+                  <FormField label="" value={header.reason_for_loss ?? ''} onChange={e => setHeader(h => ({ ...h, reason_for_loss: e.target.value }))} />
                 </div>
-                {/* Customer PO # */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Customer PO # :</span>
-                  <FormField label="" placeholder="" />
+                  <FormField label="" value={header.customer_po ?? ''} onChange={e => setHeader(h => ({ ...h, customer_po: e.target.value }))} />
                 </div>
-                {/* Sale Order # */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Sale Order # :</span>
-                  <FormField label="" placeholder="" />
+                  <FormField label="" readOnly value="" />
                 </div>
-                {/* Delivery Order # */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Delivery Order # :</span>
-                  <FormField label="" placeholder="" />
+                  <FormField label="" readOnly value="" />
                 </div>
               </div>
 
               {/* Section 3 — AR / Attachments */}
               <div className={sectionClass}>
-                {/* AR Account */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>AR Account : <span className="text-red-500">*</span></span>
-                  <FormField label="" as="select">
-                    <option value="">— Select —</option>
-                    <option>AR-001</option>
-                    <option>AR-002</option>
-                  </FormField>
+                  <FormField label="" value={header.ar_account_code ?? ''} onChange={e => setHeader(h => ({ ...h, ar_account_code: e.target.value }))} />
                 </div>
-                {/* AR Account Name */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>AR Account Name :</span>
-                  <FormField label="" readOnly placeholder="" />
+                  <div className={roClass}>{header.ar_account_name ?? ''}</div>
                 </div>
-                {/* Discount Account */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Discount Account :</span>
-                  <FormField label="" as="select">
-                    <option value="">— Select —</option>
-                    <option>DA-001</option>
-                  </FormField>
+                  <FormField label="" value={header.discount_account ?? ''} onChange={e => setHeader(h => ({ ...h, discount_account: e.target.value }))} />
                 </div>
-                {/* Attachments */}
-                <div className={`${rowClass} grid-cols-[140px_1fr]`}>
-                  <span className={labelClass}>Attachments :</span>
-                  <button className="h-9 px-3 rounded border border-[#D8CFC4] bg-white text-[10pt] font-calibri text-[#404040] text-left hover:bg-[#F3EAE2] transition-colors w-fit">
-                    Attached (0)
-                  </button>
-                </div>
-                {/* Request Remark */}
                 <div className={`${rowClass} grid-cols-[140px_1fr] items-start`}>
                   <span className="text-[9pt] font-calibri font-semibold text-[#404040] pt-2 whitespace-nowrap">Request Remark :</span>
                   <textarea
                     className="w-full h-20 rounded border border-[#D8CFC4] bg-white px-2.5 py-2 text-[10pt] font-calibri text-[#404040] resize-none focus:outline-none focus:ring-2 focus:ring-[#6C4C2C]/30 focus:border-[#6C4C2C]"
-                    placeholder=""
+                    value={header.request_remark ?? ''}
+                    onChange={e => setHeader(h => ({ ...h, request_remark: e.target.value }))}
                   />
                 </div>
-                {/* Potential Project */}
                 <div className={`${rowClass} grid-cols-[140px_1fr] items-center`}>
                   <span className={labelClass}>Potential Project :</span>
-                  <input type="checkbox" className="h-3.5 w-3.5 accent-[#6C4C2C]" />
+                  <input type="checkbox" className="h-3.5 w-3.5 accent-[#6C4C2C]"
+                    checked={header.potential_project}
+                    onChange={e => setHeader(h => ({ ...h, potential_project: e.target.checked }))} />
                 </div>
-                {/* Printed */}
                 <div className={`${rowClass} grid-cols-[140px_1fr] items-center`}>
                   <span className={labelClass}>Printed :</span>
-                  <input type="checkbox" className="h-3.5 w-3.5 accent-[#6C4C2C]" />
+                  <input type="checkbox" className="h-3.5 w-3.5 accent-[#6C4C2C]"
+                    checked={header.printed}
+                    onChange={e => setHeader(h => ({ ...h, printed: e.target.checked }))} />
                 </div>
               </div>
             </div>
@@ -209,178 +326,189 @@ export default function QuotationPage() {
 
               {/* Section 1 — Customer */}
               <div className={sectionClass}>
-                {/* Customer ID */}
+                {/* Customer ID (read-only; filled when customer selected) */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Customer ID : <span className="text-red-500">*</span></span>
-                  <FormField label="" placeholder="Search customer id" adornment={<SearchIcon />} />
+                  <div className={roClass}>{header.customer_code ? `${header.customer_code} ${header.customer_name ?? ''}` : ''}</div>
                 </div>
-                {/* Customer Name */}
+
+                {/* Customer Name — autocomplete */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Customer Name : <span className="text-red-500">*</span></span>
-                  <FormField label="" placeholder="Search customer name" adornment={<SearchIcon />} />
+                  <div className="relative">
+                    <div className="relative">
+                      <input
+                        className="h-9 w-full rounded border border-[#D8CFC4] bg-white px-2.5 pr-8 text-[10pt] font-calibri text-[#404040] focus:outline-none focus:ring-2 focus:ring-[#6C4C2C]/30 focus:border-[#6C4C2C]"
+                        value={custQuery || header.customer_name || ''}
+                        onChange={e => handleCustInput(e.target.value)}
+                        onFocus={() => { if (custQuery) setShowCustDropdown(true) }}
+                        onBlur={() => setTimeout(() => setShowCustDropdown(false), 200)}
+                        placeholder="Type to search customer…"
+                      />
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none text-[#888]">
+                        <SearchIcon />
+                      </div>
+                    </div>
+                    {showCustDropdown && custSuggestions.length > 0 && (
+                      <ul className="absolute z-30 top-full left-0 right-0 bg-white border border-[#D8CFC4] rounded shadow-lg max-h-48 overflow-y-auto">
+                        {custSuggestions.map(c => (
+                          <li
+                            key={c.id}
+                            className="px-3 py-2 text-[10pt] font-calibri text-[#404040] hover:bg-[#F3EAE2] cursor-pointer"
+                            onMouseDown={() => handleCustSelect(c)}
+                          >
+                            <span className="font-semibold text-[#6C4C2C]">{c.code}</span>
+                            <span className="ml-2">{c.name}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
                 </div>
-                {/* Representative */}
+
+                {/* Auto-populated fields */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Representative : <span className="text-red-500">*</span></span>
-                  <FormField label="" as="select">
-                    <option value="">— Select —</option>
-                    <option>REP-001</option>
-                  </FormField>
+                  <FormField label="" value={header.representative ?? ''} onChange={e => setHeader(h => ({ ...h, representative: e.target.value }))} />
                 </div>
-                {/* Head Sales */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Head Sales : <span className="text-red-500">*</span></span>
-                  <FormField label="" as="select">
-                    <option value="">— Select —</option>
-                    <option>HS-001</option>
-                  </FormField>
+                  <div className={roClass}>{header.head_sales ?? ''}</div>
                 </div>
-                {/* Attention */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Attention :</span>
-                  <FormField label="" placeholder="" />
+                  <FormField label="" value={header.attention ?? ''} onChange={e => setHeader(h => ({ ...h, attention: e.target.value }))} />
                 </div>
               </div>
 
-              {/* Section 2 — Reference / Vessel / Currency */}
+              {/* Section 2 — Reference / Currency */}
               <div className={sectionClass}>
-                {/* Reference */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Reference :</span>
-                  <FormField label="" placeholder="" />
+                  <FormField label="" value={header.reference ?? ''} onChange={e => setHeader(h => ({ ...h, reference: e.target.value }))} />
                 </div>
-                {/* Vessel Name */}
-                <div className={`${rowClass} grid-cols-[140px_1fr]`}>
-                  <span className={labelClass}>Vessel Name :</span>
-                  <FormField label="" as="select">
-                    <option value="">— Select —</option>
-                    <option>Vessel A</option>
-                  </FormField>
-                </div>
-                {/* Document Mark */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Document Mark :</span>
-                  <FormField label="" placeholder="" />
+                  <FormField label="" value={''} onChange={() => {}} />
                 </div>
-                {/* Remarks */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Remarks :</span>
-                  <FormField label="" placeholder="" />
+                  <FormField label="" value={header.remarks ?? ''} onChange={e => setHeader(h => ({ ...h, remarks: e.target.value }))} />
                 </div>
-                {/* Price Type + Terms (paired) */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Price Type :</span>
                   <div className="grid grid-cols-2 gap-x-2">
-                    <FormField label="" as="select">
+                    <FormField label="" as="select" value={header.price_type ?? ''} onChange={e => setHeader(h => ({ ...h, price_type: e.target.value }))}>
                       <option value="">— Select —</option>
-                      <option>Retail</option>
-                      <option>Wholesale</option>
+                      <option>Standard Price</option>
+                      <option>Wholesale Price</option>
                     </FormField>
-                    <FormField label="Terms :" as="select">
+                    <FormField label="Terms :" as="select" value={header.terms ?? ''} onChange={e => setHeader(h => ({ ...h, terms: e.target.value }))}>
                       <option value="">— Select —</option>
+                      <option>30+60</option>
                       <option>Net 30</option>
+                      <option>Net 60</option>
                       <option>COD</option>
                     </FormField>
                   </div>
                 </div>
-                {/* Currency */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Currency :</span>
-                  <FormField label="" as="select" defaultValue="SGD">
+                  <FormField label="" as="select" value={header.currency} onChange={e => setHeader(h => ({ ...h, currency: e.target.value }))}>
                     <option>SGD</option>
                     <option>MYR</option>
                     <option>USD</option>
                   </FormField>
                 </div>
-                {/* Currency Rate + Local Rate (paired) */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Currency Rate :</span>
                   <div className="grid grid-cols-2 gap-x-2">
-                    <FormField label="" defaultValue="1.0000" inputMode="decimal" className="[&_input]:text-right [&_input]:tabular-nums" />
-                    <FormField label="Local Rate :" defaultValue="1.0000" inputMode="decimal" className="[&_input]:text-right [&_input]:tabular-nums" />
+                    <FormField label="" type="number" step="any"
+                      value={header.currency_rate ?? 1}
+                      onChange={e => setHeader(h => ({ ...h, currency_rate: parseFloat(e.target.value) || 1 }))}
+                      className="[&_input]:text-right [&_input]:tabular-nums" />
+                    <FormField label="Local Rate :" readOnly value={header.currency_rate?.toFixed(4) ?? '1.0000'}
+                      className="[&_input]:text-right [&_input]:tabular-nums" />
                   </div>
                 </div>
               </div>
 
-              {/* Section 3 — Totals */}
+              {/* Section 3 — Totals (live from computeLines) */}
               <div className={sectionClass}>
-                {/* Sub Total */}
-                <div className={`${rowClass} grid-cols-[140px_1fr]`}>
-                  <span className={labelClass}>Sub Total :</span>
-                  <FormField label="" readOnly defaultValue="0.00" inputMode="decimal" className="[&_input]:text-right [&_input]:tabular-nums" />
-                </div>
-                {/* Discount Rate (paired: % + amount) */}
+                {[
+                  ['Sub Total :', fmt(computed.sub_total)],
+                ].map(([label, val]) => (
+                  <div key={label} className={`${rowClass} grid-cols-[140px_1fr]`}>
+                    <span className={labelClass}>{label}</span>
+                    <div className={`${roClass} justify-end tabular-nums`}>{val}</div>
+                  </div>
+                ))}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Discount Rate :</span>
                   <div className="grid grid-cols-2 gap-x-2">
-                    <FormField label="" readOnly defaultValue="0.00" inputMode="decimal" className="[&_input]:text-right [&_input]:tabular-nums" />
-                    <FormField label="" readOnly defaultValue="0.00" inputMode="decimal" className="[&_input]:text-right [&_input]:tabular-nums" />
+                    <FormField label="" type="number" step="any" min="0" max="100"
+                      value={header.discount_rate ?? 0}
+                      onChange={e => setHeader(h => ({ ...h, discount_rate: parseFloat(e.target.value) || 0 }))}
+                      className="[&_input]:text-right [&_input]:tabular-nums" />
+                    <div className={`${roClass} justify-end tabular-nums`}>{fmt(computed.discount_amt)}</div>
                   </div>
                 </div>
-                {/* Total */}
-                <div className={`${rowClass} grid-cols-[140px_1fr]`}>
-                  <span className={labelClass}>Total :</span>
-                  <FormField label="" readOnly defaultValue="0.00" inputMode="decimal" className="[&_input]:text-right [&_input]:tabular-nums" />
-                </div>
-                {/* Tax @ (three-cell: %input + select + amount) */}
+                {[
+                  ['Total :', fmt(computed.total_after_dis)],
+                ].map(([label, val]) => (
+                  <div key={label} className={`${rowClass} grid-cols-[140px_1fr]`}>
+                    <span className={labelClass}>{label}</span>
+                    <div className={`${roClass} justify-end tabular-nums`}>{val}</div>
+                  </div>
+                ))}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Tax @ :</span>
                   <div className="grid grid-cols-[56px_1fr_80px] gap-x-2">
-                    <FormField label="" readOnly defaultValue="0.0%" className="[&_input]:text-right [&_input]:tabular-nums" />
-                    <FormField label="" as="select">
-                      <option value="">— Tax Code —</option>
-                      <option>GST 9%</option>
-                      <option>No Tax</option>
+                    <div className={`${roClass} justify-end tabular-nums`}>{(header.tax_rate ?? 9).toFixed(1)}%</div>
+                    <FormField label="" as="select" value={header.tax_code ?? 'GST'} onChange={e => setHeader(h => ({ ...h, tax_code: e.target.value }))}>
+                      <option value="GST">GST</option>
+                      <option value="">No Tax</option>
                     </FormField>
-                    <FormField label="" readOnly defaultValue="0.00" inputMode="decimal" className="[&_input]:text-right [&_input]:tabular-nums" />
+                    <div className={`${roClass} justify-end tabular-nums`}>{fmt(computed.tax_total)}</div>
                   </div>
                 </div>
-                {/* Grand Total */}
-                <div className={`${rowClass} grid-cols-[140px_1fr]`}>
-                  <span className={labelClass}>Grand Total :</span>
-                  <FormField label="" readOnly defaultValue="0.00" inputMode="decimal" className="[&_input]:text-right [&_input]:tabular-nums font-semibold" />
-                </div>
-                {/* Home Sub Total */}
-                <div className={`${rowClass} grid-cols-[140px_1fr]`}>
-                  <span className={labelClass}>Home Sub Total :</span>
-                  <FormField label="" readOnly defaultValue="0.00" inputMode="decimal" className="[&_input]:text-right [&_input]:tabular-nums" />
-                </div>
-                {/* Home Tax Total */}
-                <div className={`${rowClass} grid-cols-[140px_1fr]`}>
-                  <span className={labelClass}>Home Tax Total :</span>
-                  <FormField label="" readOnly defaultValue="0.00" inputMode="decimal" className="[&_input]:text-right [&_input]:tabular-nums" />
-                </div>
-                {/* Home Total */}
-                <div className={`${rowClass} grid-cols-[140px_1fr]`}>
-                  <span className={labelClass}>Home Total :</span>
-                  <FormField label="" readOnly defaultValue="0.00" inputMode="decimal" className="[&_input]:text-right [&_input]:tabular-nums" />
-                </div>
+                {[
+                  ['Grand Total :', fmt(computed.grand_total)],
+                  ['Home Sub Total :', fmt(computed.home_sub_total)],
+                  ['Home Tax Total :', fmt(computed.home_tax_total)],
+                  ['Home Total :', fmt(computed.home_total)],
+                ].map(([label, val]) => (
+                  <div key={label} className={`${rowClass} grid-cols-[140px_1fr]`}>
+                    <span className={labelClass}>{label}</span>
+                    <div className={`${roClass} justify-end tabular-nums font-semibold`}>{val}</div>
+                  </div>
+                ))}
               </div>
-
             </div>
           </div>
         )}
 
         {/* ── ITEM TAB ── */}
         {tab === 'item' && (
-          <>
-            <div className="border-t border-[#E5DDD3] px-4 py-3">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-[9pt] font-semibold font-calibri text-[#404040]">Line Items</span>
-                <button className="text-[9pt] font-calibri text-[#6C4C2C] hover:underline">+ Add Line</button>
+          <div className="px-4 pt-3 pb-4">
+            {/* Line-level save errors */}
+            {lineErrors.length > 0 && (
+              <div className="mb-3 px-4 py-3 rounded bg-red-50 border border-red-200">
+                <p className="text-[9pt] font-semibold font-calibri text-red-700 mb-1">Line item errors:</p>
+                <ul className="list-disc list-inside space-y-0.5">
+                  {lineErrors.map((e, i) => (
+                    <li key={i} className="text-[9pt] font-calibri text-red-700">{e.message}</li>
+                  ))}
+                </ul>
               </div>
-              <DataGrid columns={LINE_COLS} rows={MOCK_LINES} />
-            </div>
-            <div className="border-t border-[#E5DDD3] flex justify-end px-4 py-3">
-              <div className="w-64 space-y-1.5 text-[10pt] font-calibri">
-                <div className="flex justify-between text-[#888]"><span>Sub Total</span><span className="tabular-nums">10,020.00</span></div>
-                <div className="flex justify-between text-[#888]"><span>Discount</span><span className="tabular-nums">720.00</span></div>
-                <div className="border-t border-[#E5DDD3] pt-1.5 flex justify-between font-semibold text-[#6C4C2C] text-[11pt]">
-                  <span>Total (SGD)</span><span className="tabular-nums">9,300.00</span>
-                </div>
-              </div>
-            </div>
-          </>
+            )}
+            <ItemGrid
+              lines={lines}
+              subTotal={computed.sub_total}
+              currency={header.currency}
+              onChange={setLines}
+            />
+          </div>
         )}
 
         {/* ── PLACEHOLDER TABS ── */}
