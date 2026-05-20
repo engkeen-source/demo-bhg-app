@@ -6,7 +6,7 @@ import Card from '@/components/common/Card'
 import DocToolbar from '@/components/common/DocToolbar'
 import FormField from '@/components/common/FormField'
 import TabBar from '@/components/common/TabBar'
-import ItemGrid from '@/components/quotation/ItemGrid'
+import ItemGrid, { newLine } from '@/components/quotation/ItemGrid'
 import { computeLines } from '@/components/quotation/calc'
 import {
   searchCustomers, getCustomer, createQuotation, updateQuotation,
@@ -70,7 +70,8 @@ function SearchIcon() {
 export default function QuotationPage() {
   const [tab, setTab] = useState('main')
   const [header, setHeader] = useState<QuotationHeader>(blankHeader())
-  const [lines, setLines] = useState<QuotationLine[]>([])
+  const [lines, setLines] = useState<QuotationLine[]>(() => [newLine(1)])
+  const [defaultLocation, setDefaultLocation] = useState('Main')
   const [saving, setSaving] = useState(false)
   const [saveErrors, setSaveErrors] = useState<SaveError[]>([])
   const [saveSuccess, setSaveSuccess] = useState(false)
@@ -94,22 +95,23 @@ export default function QuotationPage() {
 
   function handleCustInput(val: string) {
     setCustQuery(val)
-    setHeader(h => ({ ...h, customer_name: val, customer_id: undefined, customer_code: undefined }))
+    // Clear previously-selected customer when user types again
+    setHeader(h => ({ ...h, customer_id: undefined, customer_code: undefined, customer_name: undefined }))
     setShowCustDropdown(true)
     if (custSearchTimer.current) clearTimeout(custSearchTimer.current)
-    if (!val.trim()) { setCustSuggestions([]); return }
+    // Empty query still loads all customers (server already returns up to 20 when q='')
     custSearchTimer.current = setTimeout(async () => {
       const results = await searchCustomers(val).catch(() => [])
       setCustSuggestions(results)
-    }, 300)
+    }, val.trim() ? 300 : 100)
   }
 
   async function handleCustSelect(cust: CustomerSummary) {
     setShowCustDropdown(false)
-    setCustQuery(cust.name)
     // Fetch full record and auto-populate header
     const detail = await getCustomer(cust.id).catch(() => null)
     if (!detail) return
+    setCustQuery(detail.code)   // show just the code in the Customer ID field
     setHeader(h => ({
       ...h,
       customer_id:     detail.id,
@@ -161,7 +163,7 @@ export default function QuotationPage() {
 
   function handleNew() {
     setHeader(blankHeader())
-    setLines([])
+    setLines([newLine(1)])
     setSaveErrors([])
     setSaveSuccess(false)
     setCustQuery('')
@@ -326,24 +328,24 @@ export default function QuotationPage() {
 
               {/* Section 1 — Customer */}
               <div className={sectionClass}>
-                {/* Customer ID (read-only; filled when customer selected) */}
+                {/* Customer ID — searchable dropdown; shows all on focus, filters on type */}
                 <div className={`${rowClass} grid-cols-[140px_1fr]`}>
                   <span className={labelClass}>Customer ID : <span className="text-red-500">*</span></span>
-                  <div className={roClass}>{header.customer_code ? `${header.customer_code} ${header.customer_name ?? ''}` : ''}</div>
-                </div>
-
-                {/* Customer Name — autocomplete */}
-                <div className={`${rowClass} grid-cols-[140px_1fr]`}>
-                  <span className={labelClass}>Customer Name : <span className="text-red-500">*</span></span>
                   <div className="relative">
                     <div className="relative">
                       <input
                         className="h-9 w-full rounded border border-[#D8CFC4] bg-white px-2.5 pr-8 text-[10pt] font-calibri text-[#404040] focus:outline-none focus:ring-2 focus:ring-[#6C4C2C]/30 focus:border-[#6C4C2C]"
-                        value={custQuery || header.customer_name || ''}
+                        value={custQuery}
                         onChange={e => handleCustInput(e.target.value)}
-                        onFocus={() => { if (custQuery) setShowCustDropdown(true) }}
+                        onFocus={() => {
+                          setShowCustDropdown(true)
+                          // Load all customers immediately on focus (empty query)
+                          if (custSuggestions.length === 0) {
+                            searchCustomers('').then(setCustSuggestions).catch(() => {})
+                          }
+                        }}
                         onBlur={() => setTimeout(() => setShowCustDropdown(false), 200)}
-                        placeholder="Type to search customer…"
+                        placeholder="Search customer id…"
                       />
                       <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none text-[#888]">
                         <SearchIcon />
@@ -354,16 +356,22 @@ export default function QuotationPage() {
                         {custSuggestions.map(c => (
                           <li
                             key={c.id}
-                            className="px-3 py-2 text-[10pt] font-calibri text-[#404040] hover:bg-[#F3EAE2] cursor-pointer"
+                            className="px-3 py-1.5 font-calibri text-[#404040] hover:bg-[#F3EAE2] cursor-pointer"
                             onMouseDown={() => handleCustSelect(c)}
                           >
-                            <span className="font-semibold text-[#6C4C2C]">{c.code}</span>
-                            <span className="ml-2">{c.name}</span>
+                            <div className="text-[9pt] font-semibold text-[#6C4C2C]">{c.code} {c.name}</div>
+                            <div className="text-[8pt] text-[#888]">{c.name}</div>
                           </li>
                         ))}
                       </ul>
                     )}
                   </div>
+                </div>
+
+                {/* Customer Name — auto-populated from selection */}
+                <div className={`${rowClass} grid-cols-[140px_1fr]`}>
+                  <span className={labelClass}>Customer Name : <span className="text-red-500">*</span></span>
+                  <div className={roClass}>{header.customer_name ?? ''}</div>
                 </div>
 
                 {/* Auto-populated fields */}
@@ -506,7 +514,10 @@ export default function QuotationPage() {
               lines={lines}
               subTotal={computed.sub_total}
               currency={header.currency}
+              defaultLocation={defaultLocation}
+              onDefaultLocationChange={setDefaultLocation}
               onChange={setLines}
+              computedLines={computed.lines}
             />
           </div>
         )}
